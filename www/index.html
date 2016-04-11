@@ -22,9 +22,9 @@
         
     </head>
     <body ng-app="materialApp">
-    <div ng-controller="DashCtrl as ul" layout="column" layout-fill ng-cloak>
+    <div ng-controller="DashCtrl as ul" layout="column" ng-cloak style="height:100%">
         
-        <md-toolbar class="md-whiteframe-glow-z1" aria-hidden="false">
+        <md-toolbar>
             <div class="md-toolbar-tools" style="color:#FFF">
                 <!-- <md-button class="md-icon-button" ng-click="toggleMenu()">
                 <md-icon md-font-icon="icon-menu" ng-style="{'font-size': '28px'}" aria-label="Show Menu"></md-icon>
@@ -83,82 +83,50 @@
           </div>
         </md-toolbar>
         <md-progress-linear md-mode="indeterminate" ng-show="ul.isLoading"></md-progress-linear>
-        <md-content  flex layout="row" layout-wrap layout-align="center center">
-        <!-- <div style="background-color:rgba(0, 0, 0, 0.15);" flex="100" flex-gt-xs="50" layout="column">
-            <md-card ng-show="$root.featuredEvents" ng-repeat="event in $root.featuredEvents | limitTo: 10">
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">{{event.title}}</span>
-                <span class="md-subhead" style="font-weight: bold;">{{event.venue_name}}</span>
-                <span class="md-subhead">{{event.start_date+' '+event.start_time| formatDate}} <br>{{event.start_date+' '+event.start_time | formatTime}}</span>
-              </md-card-title-text>
-              <md-card-title-media>
-                <div class="md-media-lg card-media">
-                    <img ng-show="{{event.main_image!==undefined}}" src="{{event.main_image}}">
-                    <img ng-show="{{(event.main_image ===undefined)}}" ng-src="/themes/material/img/jumpIn-small.png">
-                    
-                </div>
-              </md-card-title-media>
-            </md-card-title>
-            <md-card-content>
-                {{event.summary}}
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="start center">
+       <div ng-cloak layout-xs="column" layout-fill layout-align="center center" style="background-color: #c2c2c2;">
+            <md-content style="background-color: #fff !important;" layout-align="center center" class="md-whiteframe-z1" flex="75" flex-xs="100" layout="column">
+                
+                <div style="position: absolute;top:0px">
+                    <md-content ng-cloak class="md-whiteframe-z2" layout-align="center center">
+                        <md-card ng-repeat="event in $root.events | limitTo: 10">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{event.title}}</span>
+                            <span class="md-subhead" style="font-weight: bold;">{{event.venue_name}}</span>
+                            <span class="md-subhead">{{event.start_date+' '+event.start_time| formatDate}} <br>{{event.start_date+' '+event.start_time | formatTime}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                                <img ng-show="{{event.main_image!==undefined}}" src="{{event.main_image}}">
+                                <img ng-show="{{(event.main_image ===undefined)}}" ng-src="./themes/material/img/jumpIn-small.png">
+                                
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                        <md-card-content>
+                            {{event.summary}}
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="start center">
 
-                <md-button aria-label="save" class="md-fab">
-                    <md-icon md-font-icon="icon-event-available" ng-style="{'font-size': '24px','color':'#ff0'}"></md-icon>
-                </md-button>
+                            <md-button aria-label="save" class="md-fab" ng-click="ul.addEvent($event,event)">
+                                <md-icon md-font-icon="icon-event-available" ng-style="{'font-size': '24px','color':'#ff0'}"></md-icon>
+                            </md-button>
 
-              <md-card-icon-actions>
-                <md-button class="md-icon" aria-label="toggle">
-                  <md-icon md-font-icon="icon-local-play" ng-style="{'font-size': '28px'}"></md-icon>
-                </md-button>
+                          <md-card-icon-actions>
+                            <md-button class="md-icon-button" aria-label="toggle" ng-href="{{event.link}}">
+                              <md-icon md-font-icon="icon-local-play" ng-style="{'font-size': '28px'}"></md-icon>
+                            </md-button>
 
-                <md-button class="md-icon-button" aria-label="toggle">
-                  <md-icon md-font-icon="icon-share" ng-style="{'font-size': '28px'}"></md-icon>
-                </md-button>
-              </md-card-icon-actions>
-          </md-card>
-        </div> -->
-        <div flex="100" flex-gt-xs="50" layout="column" style="padding-top: 300px;">
-            <md-card ng-repeat="event in $root.events | limitTo: 10">
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">{{event.title}}</span>
-                <span class="md-subhead" style="font-weight: bold;">{{event.venue_name}}</span>
-                <span class="md-subhead">{{event.start_date+' '+event.start_time| formatDate}} <br>{{event.start_date+' '+event.start_time | formatTime}}</span>
-              </md-card-title-text>
-              <md-card-title-media>
-                <div class="md-media-lg card-media">
-                    <img ng-show="{{event.main_image!==undefined}}" src="{{event.main_image}}">
-                    <img ng-show="{{(event.main_image ===undefined)}}" ng-src="./themes/material/img/jumpIn-small.png">
-                    
-                </div>
-              </md-card-title-media>
-            </md-card-title>
-            <md-card-content>
-                {{event.summary}}
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="start center">
-
-                <md-button aria-label="save" class="md-fab" ng-click="ul.addEvent($event,event)">
-                    <md-icon md-font-icon="icon-event-available" ng-style="{'font-size': '24px','color':'#ff0'}"></md-icon>
-                </md-button>
-
-              <md-card-icon-actions>
-                <md-button class="md-icon-button" aria-label="toggle" ng-href="{{event.link}}">
-                  <md-icon md-font-icon="icon-local-play" ng-style="{'font-size': '28px'}"></md-icon>
-                </md-button>
-
-                <md-button class="md-icon-button" aria-label="toggle" ng-click="ul.share($event)">
-                  <md-icon md-font-icon="icon-share" ng-style="{'font-size': '28px'}"></md-icon>
-                </md-button>
-              </md-card-icon-actions>
-            </md-card-actions>
-          </md-card>
-          <md-card>
-          <md-button ng-hide="ul.isLoading" ng-click="ul.loadMore($event)" class="md-raised md-primary md-hue-2" ng-style="{color:'#FFFFFF','background-color': '#000',border: '1px solid #424242','font-size': '18px','min-width':'260px'}">Load More</md-button>
-          </md-card>
+                            <md-button class="md-icon-button" aria-label="toggle" ng-click="ul.share($event)">
+                              <md-icon md-font-icon="icon-share" ng-style="{'font-size': '28px'}"></md-icon>
+                            </md-button>
+                          </md-card-icon-actions>
+                        </md-card-actions>
+                      </md-card>
+                      <md-card>
+                      <md-button ng-hide="ul.isLoading" ng-click="ul.loadMore($event)" class="md-raised md-primary md-hue-2" ng-style="{color:'#FFFFFF','background-color': '#000',border: '1px solid #424242','font-size': '18px','min-width':'260px'}">Load More</md-button>
+                      </md-card>
+                  </md-content>
         </div>
         </md-content>
 </div>
