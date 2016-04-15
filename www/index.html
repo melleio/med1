@@ -38,7 +38,7 @@
                     <md-input-container md-no-float style="width: 100%" class="md-block">
                         <md-icon md-font-icon="icon-search" ng-style="{'color':'#fff'}" aria-label="searchicon"></md-icon>
                         
-                        <input ng-model="user.query" placeholder="Jump In" ng-keyup="ul.search($event)">
+                        <input ng-model="user.query" placeholder="Jump In" ng-keyup="ul.search($event)" style="height:36px">
                     </md-input-container>
                 </div>
                 <md-button ng-show="$root.authData" class="md-icon-button" ng-click="ul.currentLocation($event)">
@@ -83,12 +83,12 @@
           </div>
         </md-toolbar>
         <md-progress-linear md-mode="indeterminate" ng-show="ul.isLoading"></md-progress-linear>
-       <div ng-cloak layout-xs="column" layout-fill layout-align="center center" style="background-color: #c2c2c2;">
-            <md-content style="background-color: #fff !important;" layout-align="center center" class="md-whiteframe-z1" flex="75" flex-xs="100" layout="column">
-                
-                <div style="position: absolute;top:0px">
-                    <md-content ng-cloak class="md-whiteframe-z2" layout-align="center center">
-                        <md-card ng-repeat="event in $root.events | limitTo: 10">
+
+        <div ng-cloak layout-xs="column" layout="row" layout-fill layout-align="center center" style="">
+          <span flex hide-xs></span>
+            <div layout-align="start center" flex="75" flex-xs="100" layout="column">
+                  <div layout="row" layout-wrap>
+                        <md-card flex="100" flex-gt-sm="45" ng-repeat="event in $root.events | limitTo: 100">
                         <md-card-title>
                           <md-card-title-text>
                             <span class="md-headline">{{event.title}}</span>
@@ -123,13 +123,14 @@
                           </md-card-icon-actions>
                         </md-card-actions>
                       </md-card>
-                      <md-card>
+                      <!-- <md-card>
                       <md-button ng-hide="ul.isLoading" ng-click="ul.loadMore($event)" class="md-raised md-primary md-hue-2" ng-style="{color:'#FFFFFF','background-color': '#000',border: '1px solid #424242','font-size': '18px','min-width':'260px'}">Load More</md-button>
-                      </md-card>
-                  </md-content>
+                      </md-card> -->
+                  </div>
         </div>
-        </md-content>
+        <span flex hide-xs></span>
 </div>
+
 <!-- <footer id="footer"  style="border-top: 1px solid #7A385F;" layout="row">
     <div layout-padding>
     <img height="50" ng-show="{{(event.main_image ===undefined)}}" ng-src="./themes/material/img/jumpIn-small.png"></div>
@@ -147,8 +148,6 @@
       </p>
       </div>
     </footer> -->
-
-    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script src="./bower_components/firebase/firebase.js"></script>
     <script type="text/javascript" src="./bower_components/angularfire/dist/angularfire.js"></script>

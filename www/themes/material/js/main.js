@@ -7,7 +7,7 @@ var ang = angular
       var networkState = navigator.connection.type;
 
       var states = {};
-      $rootScope.initialLimit = 20;
+      $rootScope.initialLimit = 40;
       states[Connection.UNKNOWN]  = 'Unknown connection';
       states[Connection.ETHERNET] = 'Ethernet connection';
       states[Connection.WIFI]     = 'WiFi connection';
@@ -252,7 +252,7 @@ document.addEventListener("deviceready", function () {
     self.isLoading = false;
     $mdToast.show(
       $mdToast.simple()
-      .content("New event")
+      .content("Events loaded")
       .position('bottom right')
       .hideDelay(1000)
     );
@@ -353,6 +353,7 @@ document.addEventListener("deviceready", function () {
       // }, function() {
       //   $scope.status = 'You cancelled the dialog.';
       // });
+      // self.login()
     }
   }
   document.addEventListener("deviceready", function () {
