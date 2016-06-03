@@ -78,7 +78,7 @@ var ang = angular
   };
 })
 
-.controller('DashCtrl', function($rootScope,$scope,$mdBottomSheet,$mdDialog,$mdToast,$http,$filter,$mdMedia,$cordovaCalendar,$timeout) {
+.controller('DashCtrl', function($rootScope,$scope,$mdBottomSheet,$mdDialog,$mdToast,$http,$filter,$mdMedia,$timeout) {
 //document.addEventListener("deviceready", function () {
   var self = this;
   self.isLoading=true;
