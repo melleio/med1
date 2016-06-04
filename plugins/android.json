@@ -18,6 +18,9 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "io.melle.events.jumpin"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.melle.events.jumpin"
         }
     },
     "dependent_plugins": {}

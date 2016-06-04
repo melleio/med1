@@ -29,11 +29,11 @@
                 
                 <span flex hide show-gt-xs></span>
                 <!-- <h2 class="subpage" hide-xs>Home</h2> -->
-                <div flex-gt-xs="30" style="padding: 4px 10px;" flex="75" class="toolbarSearch">
+                <div flex-gt-xs="30" style="position:relative;top:7px;padding: 0px 5px;" flex="75" class="toolbarSearch">
                     <md-input-container md-no-float style="width: 100%" class="md-block">
                         <md-icon md-font-icon="icon-search" ng-style="{'color':'#fff'}" aria-label="searchicon"></md-icon>
                         
-                        <input ng-model="user.query" placeholder="Search Doctor" ng-keyup="ul.search($event)" style="height:36px">
+                        <input ng-model="user.query" placeholder="Search Doctor" ng-keyup="ul.search($event)" style="height:26px">
                     </md-input-container>
                 </div>
                 
@@ -47,7 +47,7 @@
                     <md-menu-content  width="4">
                         <md-menu-item ng-hide="$root.isAuth">
                           <md-button class="md-primary" ng-click="ul.login($event)">
-                            History
+                            Save
                           </md-button>
                         </md-menu-item>
                         <md-menu-item ng-show="$root.isAuth">
@@ -58,7 +58,7 @@
                         <md-menu-divider></md-menu-divider>
                         <md-menu-item>
                           <md-button class="md-primary" ng-click="ctrl.toggleNotifications()">
-                            About
+                            New
                           </md-button>
                         </md-menu-item>
                     </md-menu-content>
@@ -72,17 +72,13 @@
         <div ng-cloak layout-xs="column" layout="column" layout-align="start start" style="">
             <div layout-align="start start" layout="row">
                   <div layout="row">
-                        <div layout="column" layout-align="start center">
+                        <div layout="column" layout-align="start center" layout-padding>
                         <md-select placeholder="Choose Doctor" ng-model="user" md-on-open="loadUsers()" style="min-width: 200px;">
                           <md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
                         </md-select>
-                        <p class="md-caption">This survey is for: {{ user ? user.name : 'No one yet' }}</p>
                         </div>
                   </div>
-                  <span flex=30></span>
-                  <div layout-padding>
-                  <md-button class="md-raised md-primary md-hue-1" ng-click="saveForm($event)">Save</md-button>
-                </div>
+                  <span flex></span>
             </div>
             <md-content layout-fill flex layout-padding md-whiteframe="1">
             <div style="min-width: 300px;"    ng-repeat="question in questions" layout="column">

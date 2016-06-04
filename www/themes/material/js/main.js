@@ -98,6 +98,11 @@ var ang = angular
 
   ];
 
+var originatorEv;
+    this.openNotificationsMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
   $scope.saveForm = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
     // Modal dialogs should fully cover application

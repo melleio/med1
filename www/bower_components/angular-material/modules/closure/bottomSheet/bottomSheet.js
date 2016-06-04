@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.7
+ * v1.1.0-rc.5-master-a0ca139
  */
 goog.provide('ng.material.components.bottomSheet');
 goog.require('ng.material.components.backdrop');
@@ -25,7 +25,9 @@ angular
 function MdBottomSheetDirective($mdBottomSheet) {
   return {
     restrict: 'E',
-    link : function postLink(scope, element, attr) {
+    link : function postLink(scope, element) {
+      element.addClass('_md');     // private md component indicator for styling
+
       // When navigation force destroys an interimElement, then
       // listen and $destroy() that interim instance...
       scope.$on('$destroy', function() {
@@ -204,7 +206,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
           var focusable = $mdUtil.findFocusTarget(element) || angular.element(
             element[0].querySelector('button') ||
             element[0].querySelector('a') ||
-            element[0].querySelector('[ng-click]')
+            element[0].querySelector($mdUtil.prefixer('ng-click', true))
           ) || backdrop;
 
           if (options.escapeToClose) {
