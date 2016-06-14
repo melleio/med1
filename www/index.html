@@ -47,14 +47,14 @@
                     <md-menu-content  width="4">
                         <md-menu-item ng-hide="$root.isAuth">
                           <md-button class="md-primary" ng-click="ul.login($event)">
-                            Save
+                            History
                           </md-button>
                         </md-menu-item>
-                        <md-menu-item ng-show="$root.isAuth">
+                        <!-- <md-menu-item ng-show="$root.isAuth">
                           <md-button class="md-primary" ng-click="ul.login($event)">
                             Log Out
                           </md-button>
-                        </md-menu-item>
+                        </md-menu-item> -->
                         <md-menu-divider></md-menu-divider>
                         <md-menu-item>
                           <md-button class="md-primary" ng-click="ctrl.toggleNotifications()">
@@ -71,28 +71,37 @@
 
         <div ng-cloak layout-xs="column" layout="column" layout-align="start start" style="">
             <div layout-align="start start" layout="row">
-                  <div layout="row">
-                        <div layout="column" layout-align="start center" layout-padding>
-                        <md-select placeholder="Choose Doctor" ng-model="user" md-on-open="loadUsers()" style="min-width: 200px;">
+                  <div layout="column">
+                        <md-select placeholder="Choose Doctor" ng-model="user" md-on-open="loadUsers()" style="min-width: 200px;padding: 0px">
                           <md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
                         </md-select>
-                        </div>
                   </div>
-                  <span flex></span>
             </div>
-            <md-content layout-fill flex layout-padding md-whiteframe="1">
-            <div style="min-width: 300px;"    ng-repeat="question in questions" layout="column">
-              <p>{{question.q}}</p>
-              <md-select flex="30" placeholder="Answer" ng-model="answer$index" md-on-open="loadAnswers()" style="
-              width: 200px;">
-                <md-option ng-value="a" ng-repeat="a in answers">{{a.name}}</md-option>
-              </md-select>
+
+            <div layout-align="start start" layout="row">
+                  <div layout="column">
+                        <md-select placeholder="Choose Survey" ng-model="survey" md-on-open="loadSurveys()" style="min-width: 200px;padding: 0px">
+                          <md-option ng-value="survey" ng-repeat="s in surveys">{{s.Title}}</md-option>
+                        </md-select>
+                  </div>
             </div>
-            <md-divider ng-if="!$last"></md-divider>
+
+            <md-content flex layout-padding>
+            <div style="min-width:320px;" layout-fill ng-repeat="item in survey.items" layout="column">
+              <p>{{item.Content}}</p>
+              <div layout="column">
+                <md-select ng-show="(item.AnswerType == 'yes_no')" placeholder="Answer" ng-model="answer$index" md-on-open="loadAnswers()" style="min-width: 200px;padding: 0px">
+                  <md-option ng-value="a" ng-repeat="a in answers">{{a.name}}</md-option>
+                </md-select>
+              </div>
+            </div>
+            
             
   </md-content>
+  
 </div>
-
+<md-divider></md-divider>
+  <md-button class="md-raised md-primary md-hue-1">Save</md-button>
 <!-- <footer id="footer"  style="border-top: 1px solid #7A385F;" layout="row">
     <div layout-padding>
     <img height="50" ng-show="{{(event.main_image ===undefined)}}" ng-src="./themes/material/img/jumpIn-small.png"></div>

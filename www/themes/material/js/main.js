@@ -89,6 +89,12 @@ var ang = angular
     storageBucket: "project-1885830840049226859.appspot.com",
   };
   firebase.initializeApp(config);
+  $scope.surveys = null;
+  $scope.answers =  $scope.answers  || [
+        { id: 1, name: 'Yes' },
+        { id: 2, name: 'No' },
+        { id: 3, name: 'N/A' }
+      ];
   $scope.questions=[
   {q:"Code Status?",a:true},
   {q:"Sedation Holiday Goal?",a:true},
@@ -131,6 +137,15 @@ var originatorEv;
       ];
     }, 650);
   };
+
+  $scope.loadSurveys = function() {
+    // Use timeout to simulate a 650ms request.
+    if($scope.surveys == null){
+      return firebase.database().ref('surveys').on('value', function(snapshot) {
+        $scope.surveys = snapshot.val();
+      });
+    }
+  }
 
   $scope.loadAnswers = function() {
     // Use timeout to simulate a 650ms request.
