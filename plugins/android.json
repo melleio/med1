@@ -7,34 +7,34 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
-        },
         "cordova-plugin-calendar": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.melle.med.v1"
+            "PACKAGE_NAME": "io.melle.dgcleaning"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.melle.dealspace"
+            "PACKAGE_NAME": "io.melle.dgcleaning"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.melle.dealspace"
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.melle.dealspace"
+            "PACKAGE_NAME": "io.melle.dgcleaning"
         }
     }
 }

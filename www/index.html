@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" > 
         <!-- Enable all requests, inline styles, and eval() -->
         <!-- Allows XHRs only over HTTPS on the same domain. -->
-<meta http-equiv="Content-Security-Policy" content="default-src *;img-src * 'self' data:; style-src * 'unsafe-inline'; media-src *;script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio.co https://*.firebaseapp.com https://*.gstatic.com http://*.google.com https://*.google.com https://*.googleapis.com https://*.emelle.me http://*.emelle.me 'unsafe-eval'; object-src 'self' 'unsafe-eval'">
+<meta http-equiv="Content-Security-Policy" content="default-src *;img-src * 'self' data:; style-src * 'unsafe-inline'; media-src *;script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio.co https://*.firebaseapp.com https://www.gstatic.com https://*.gstatic.com http://*.google.com https://*.google.com https://*.googleapis.com https://*.emelle.me http://*.emelle.me 'unsafe-eval'; object-src 'self' 'unsafe-eval'">
         
         <link href="./themes/material/css/icomoon.css" rel="stylesheet">
         <link href="./bower_components/angular-material/angular-material.min.css" rel="stylesheet" type="text/css"/>
@@ -18,39 +18,8 @@
         
     </head>
     <body ng-app="materialApp">
-      <md-sidenav ng-cloak class="md-whiteframe-z2" md-component-id="left">
-      <md-list layout-fill>
-      <!-- <md-item>
-      <md-button ng-click="ul.listMyProperties()">
-        <md-icon md-font-icon="search" class=""></md-icon>
-        My Properties
-      </md-button>
-      </md-item> -->
 
-      <md-item>
-      <md-button ng-click="ul.getHistory()">
-        <md-icon md-font-icon="search" class=""></md-icon>
-        Book Appointment
-      </md-button>
-      </md-item>
-
-      <md-item>
-      <md-button ng-click="ul.filterDeals()">
-        <md-icon md-font-icon="search" class=""></md-icon>
-        My Calendar
-      </md-button>
-      </md-item>
-
-      <md-item>
-      <md-button ng-click="ul.filterPipeline()">
-        <md-icon md-font-icon="search" class=""></md-icon>
-        My Account
-      </md-button>
-      </md-item>
-
-          </md-list>
-  </md-sidenav>
-    <div ng-controller="DashCtrl as ul" layout="column" ng-cloak style="height:100%">
+    <div ng-controller="DashCtrl as ul" layout="column" ng-cloak>
       <md-toolbar layout="row" layout-align="start center" class="main-toolbar">
           <md-button class="md-icon-button" ng-click="ul.toggleList('left')" aria-label="Search">
             <md-icon md-font-icon="icon-menu" alt="edit" ng-style="{'font-size':'24px'}"></md-icon>
@@ -58,30 +27,19 @@
           <md-toolbar-title>
             <span class="logo">{{$root.subTitle}}</span>
           </md-toolbar-title>
+          
       </md-toolbar>
         <md-progress-linear md-mode="indeterminate" ng-show="searching"></md-progress-linear>        
         <div ui-view ng-cloak layout-align="start start" style=""></div>
+
+      
   </div>
-<!-- <footer id="footer"  style="border-top: 1px solid #7A385F;" layout="row">
-    <div layout-padding>
-    <img height="50" ng-show="{{(event.main_image ===undefined)}}" ng-src="./themes/material/img/jumpIn-small.png"></div>
-    <span flex></span>
-      <div layout="column" layout-fill layout-align="end center">
-      <p>
-        <a href="/#/terms">
-          Terms and Conditions
-        </a>
-      </p>
-      <p>
-        <a href="/#/privacy">
-          Privacy Policy
-        </a>
-      </p>
-      </div>
-    </footer> -->
+
+  
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+    <script src="./bower_components/firebase/firebase.js"></script>
     <script src="./bower_components/angular-route/angular-route.js"></script>
     <script src="./bower_components/angularfire/dist/angularfire.js"></script>
     <script type="text/javascript" src="./bower_components/lodash/dist/lodash.min.js"></script>
@@ -96,6 +54,7 @@
         <script src="./themes/material/js/paginator.js"></script>
         <script src="./themes/material/js/main.js"></script>
         <script src="./themes/material/js/home.js"></script>
+        <script src="./themes/material/js/checkout.js"></script>
         
   </body>
 </html>

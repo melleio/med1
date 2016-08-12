@@ -1,0 +1,90 @@
+
+<md-content flex layout-padding layout-fill>
+            <div layout-align="center center" layout-fill layout="row">
+                  <div layout="column">
+                    <h1>DealSpace</h1>
+                    <md-card ng-show="$root.currentSurvey.doctor">
+                      <md-card-header>
+                        <md-card-avatar>
+                          <md-icon class="md-avatar-icon" md-font-icon="icon-person-outline"></md-icon>
+                        </md-card-avatar>
+                        <md-card-header-text>
+                          <span class="md-title">Dr. {{$root.currentSurvey.doctor.FirstName+' '+user.Surname}}</span>
+                          <span class="md-subhead">{{$root.currentSurvey.survey.Title}}</span>
+                        </md-card-header-text>
+                      </md-card-header>
+                    </md-card>
+                    
+                  </div>
+            </div>
+
+            <div style="min-width:310px;" layout="column">
+              <md-autocomplete
+                ng-disabled="$root.isDisabled"
+                md-no-cache="$root.noCache"
+                md-selected-item="$root.selectedItem"
+                md-search-text-change="$root.searchTextChange($root.searchText)"
+                md-search-text="$root.searchText"
+                md-selected-item-change="$root.selectedItemChange(item)"
+                md-items="item in $root.querySearch($root.searchText)"
+                md-item-text="item.name"
+                md-min-length="0"
+                placeholder="Enter an Address or Zipcode"
+                md-menu-class="autocomplete-custom-template">
+              <md-item-template>
+                <span class="item-title">
+                  <md-icon md-font-icon="icon-person"></md-icon>
+                  <span> {{item.name}} </span>
+                </span>
+                <span class="item-metadata">
+                  <span class="item-metastat">
+                    MRN: <strong>{{item.mrn}}</strong>
+                  </span>
+                </span>
+              </md-item-template>
+              
+            </md-autocomplete>
+            </div>
+            <div flex-xs flex="50">
+              <!-- <md-checkbox ng-model="showFilters" aria-label="Checkbox 1">
+                Filter
+              </md-checkbox> -->
+            </div>
+            <div layout="column">
+                <md-select ng-hide="showFilters" placeholder="Property/Parcel Type" ng-model="$root.currentSurvey.survey" md-on-open="loadSurveys()" style="min-width: 200px;padding: 0px">
+                  <md-option ng-value="s" ng-repeat="s in surveys">{{s.Title}}</md-option>
+                </md-select>
+            </div>
+           <!--  <div layout="column">
+                <md-select ng-hide="showFilters" placeholder="Property Status" ng-model="$root.currentSurvey.survey" md-on-open="loadSurveys()" style="min-width: 200px;padding: 0px">
+                  <md-option ng-value="s" ng-repeat="s in surveys">{{s.Title}}</md-option>
+                </md-select>
+            </div> -->
+            <div layout="column" class="md-whiteframe-z1" style="background:#fff">
+              <md-list flex>
+                <md-subheader class="md-no-sticky">or choose a region</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
+                  <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+                  <div class="md-list-item-text" layout="column">
+                    <h3>{{ item.who }}</h3>
+                  </div>
+                </md-list-item>
+                <md-divider ></md-divider>
+                <md-subheader class="md-no-sticky">2 line item</md-subheader>
+                <md-list-item class="md-2-line">
+                  <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
+                  <div class="md-list-item-text">
+                    <h3>{{ todos[0].who }}</h3>
+                    <p>Secondary text</p>
+                  </div>
+                </md-list-item>
+              </md-list>
+              <!-- <div style="min-width:245px;" layout="column">
+                <p><strong>Disclaimer</strong><br>
+                  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">More</a></small></p>
+                
+              </div> -->
+            </div>
+            
+            
+  </md-content>

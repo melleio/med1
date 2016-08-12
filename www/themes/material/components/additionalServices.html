@@ -1,0 +1,36 @@
+<md-dialog aria-label="Contact">
+  <md-content class="sticky-container">
+
+  <md-toolbar class="md-accent md-hue-1">
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">Additional Services</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-progress-linear ng-show="confirming" class="md-hue-2" md-mode="indeterminate"></md-progress-linear>
+  
+    
+    <div class="md-dialog-content">
+      <h3>Choose add on services</h3>
+      <!-- <div flex-xs flex="50">
+            <md-checkbox aria-label="Select All"
+                         ng-checked="isChecked()"
+                         md-indeterminate="isIndeterminate()"
+                         ng-click="toggleAll()">
+              <span ng-if="isChecked()">Un-</span>Select All
+            </md-checkbox>
+          </div> -->
+            <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in $root.addonservices">
+              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+               {{item.name}} (+<span style="color:green">${{item.value}}</span>)
+              </md-checkbox>
+            </div>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()" class="md-primary md-hue-3">
+      Done
+    </md-button>
+  </div>
+</md-dialog>

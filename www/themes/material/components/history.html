@@ -1,0 +1,16 @@
+<div ng-cloak layout-xs="column" layout="column" layout-align="start start" style="">
+<md-content flex layout-padding>
+<md-toolbar layout="row" class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <span>Saved Surveys</span>
+      </div>
+    </md-toolbar>
+<md-list>
+<md-list-item class="md-2-line" ng-repeat="(key,s) in $root.saved">
+  <div class="md-list-item-text">
+    <h3>{{ s.doctor.FirstName }}</h3>
+    <p><a ng-click="openSurvey(key)">{{ s.survey.Title }} - {{ s.timestamp | formatTimeRelative}}</a></p>
+  </div>
+</md-list-item>
+</md-content>
+</div>

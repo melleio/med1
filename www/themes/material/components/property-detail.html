@@ -1,0 +1,58 @@
+
+<md-content ng-controller="PropertyCtrl as ul">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Detail">
+        <md-content class="md-padding">
+          <h1 class="title">{{$root.currentParcel.full_address}}<span style="float:right"><md-icon md-font-icon="icon-star-outline"></md-icon></span></h1>
+          <div class="md-padding property-content" layout="row" layout-xs="column">
+            <div flex flex-gt-xs="50" layout="column" style="font-size: 0.9em;">
+              <p><strong>Last Sale Date:</strong> <span style="float:right;">{{$root.currentParcel.sales_information.sales_date | cleandate}}</span></p>
+             <p><strong>Last Sale Price:</strong> <span style="float:right;">{{$root.currentParcel.sales_information.sales_price | formatMoney}}</span></p>
+              <p><strong>Building Code:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.building_code}}</span></p>
+              <p><strong>Description:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.description}}</span></p>
+              <p><strong>Homestead:</strong> <span style="float:right;">{{($root.currentParcel.characteristics.homestead == null) ? "None ": $root.currentParcel.characteristics.homestead}}</span></p>
+              <p><strong>Land Area:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.improvement_area | number:0}} sqft</span></p>
+              <p><strong>Improvement Area:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.improvement_area | number:0}} sqft</span></p>
+              <p ng-show="$root.currentParcel.characteristics.improvement_description !=''"><strong>Improvement Description:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.improvement_description}}</span></p>
+            </div>
+            <div flex flex-order-xs="-1" flex-gt-xs="50" layout="column">
+              <img ng-src="{{$root.currentParcel.staticImageUrl}}" class="full-width" />
+            </div>
+          </div>
+          
+        </md-content>
+      </md-tab>
+      <md-tab label="Notes">
+        <md-content class="md-padding">
+          <h1 class="title">Notes</h1>
+          <md-divider></md-divider>
+          <div>
+            <md-button class="md-icon-button" ng-click="addNotes($event)" aria-label="Notes">
+            <md-tooltip md-direction="bottom">
+              add a note
+            </md-tooltip>
+              <md-icon md-font-icon="icon-note-add" ng-style="{'font-size':'24px'}" alt="more-options"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="addNotes($event)" aria-label="Notes">
+            <md-tooltip md-direction="bottom">
+              add a picture
+            </md-tooltip>
+              <md-icon md-font-icon="icon-photo-camera" ng-style="{'font-size':'24px'}" alt="more-options"></md-icon>
+            </md-button>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Debts">
+        <md-content class="md-padding">
+          <h1 class="title">Debt Information</h1>
+          <md-divider></md-divider>
+        </md-content>
+      </md-tab>
+      <md-tab label="Permits">
+        <md-content class="md-padding">
+          <h1 class="title">Licensing &amp; Inspection</h1>
+          <md-divider></md-divider>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>

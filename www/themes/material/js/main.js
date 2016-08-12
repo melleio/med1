@@ -34,9 +34,9 @@ var ang = angular
             url: "/home",
             templateUrl: "./themes/material/components/home.html"
           })
-          .state('p', {
-            url: "/p/:city/:id",
-            templateUrl: "./themes/material/components/property-detail.html",
+          .state('checkout', {
+            url: "/checkout/:city/:id",
+            templateUrl: "./themes/material/components/checkout.html",
             controller: function($stateParams){
               $stateParams.id;  //*** Exists! ***//
               $stateParams.city;
@@ -133,9 +133,10 @@ var ang = angular
   $rootScope.active_regions = null;
   $rootScope.subTitle = "Book Service";
   var config = {
-    apiKey: "AIzaSyCmzpXA9l45E9DthYOVtdIFEYrgGD5fS",
-    databaseURL: "https://project-5024312928467115441.firebaseio.com",
-    storageBucket: "project-5024312928467115441.appspot.com",
+    apiKey: "AIzaSyDKnxvk2sh3qp5V_4_gClpltlz9veNnXwU",
+    authDomain: "dgcleaning-e8c12.firebaseapp.com",
+    databaseURL: "https://dgcleaning-e8c12.firebaseio.com",
+    storageBucket: "dgcleaning-e8c12.appspot.com",
   };
   firebase.initializeApp(config);
   $scope.surveys = null;
@@ -159,8 +160,20 @@ var ang = angular
     );
   }
 
-  $scope.doSearch = function(ev){
-    $state.go('p',{id:$rootScope.gAddress,city:$rootScope.currentCity});
+  $scope.checkout = function(ev){
+    // $state.go('checkout',{id:$rootScope.gAddress,city:$rootScope.currentCity});
+    var confirm = $mdDialog.confirm()
+          .title('Booking available soon!')
+          .textContent('Booking will be available soon! For now give us a call us at 267-506-1575. :)')
+          .ariaLabel('Lucky day')
+          .targetEvent(ev)
+          .ok('Back')
+          .cancel('Call Now');
+    $mdDialog.show(confirm).then(function() {
+      $scope.status = 'You decided to get rid of your debt.';
+    }, function() {
+      document.location.href = 'tel:+1-267-506-1575';
+    });
   }
   $scope.closeKeyboard = function($event){
     // cordova.plugins.Keyboard.close();
@@ -195,36 +208,7 @@ var ang = angular
           //Check city
           var city = null;
           $rootScope.currentCity = null;
-          if($rootScope.active_regions == null){
-            firebase.database().ref('active_regions').on('value', function(snapshot) {
-              $rootScope.active_regions = snapshot.val();
-              angular.forEach($rootScope.active_regions, function(v, k) {
-                if(v == gResult.address_components[3].short_name)
-                  city = gResult.address_components[3].short_name;
-                $rootScope.currentCity = k;
-              });
-              if(city == null){
-                $rootScope.gAddress = null;
-              }else{
-                $rootScope.gAddress = gResult.address_components[0].short_name+" "+gResult.address_components[1].short_name
-              }
-              console.log($rootScope.gAddress);
-              var parcelid = null;
-              parcelid = $rootScope.getParcel($rootScope.gAddress,$rootScope.currentCity);
-
-            });
-          }else{
-            angular.forEach($rootScope.active_regions, function(v, k) {
-              if(v == gResult.address_components[3].short_name)
-                city = gResult.address_components[3].short_name;
-              $rootScope.currentCity = k;
-            });
-            if(city == null){
-              $rootScope.gAddress = null;
-            }else{
-              $rootScope.gAddress = gResult.address_components[0].short_name+" "+gResult.address_components[1].short_name
-            }
-          }
+          $rootScope.gAddress = gResult.address_components[0].short_name+" "+gResult.address_components[1].short_name;
           
           if(r.results.length < 1){
             $mdToast.show(
@@ -242,6 +226,7 @@ var ang = angular
             //   .hideDelay(3000)
             // );
           }else{
+            $scope.showList(r.results);
             $mdToast.show(
               $mdToast.simple()
               .content("Multiple addresses found!")
@@ -585,13 +570,13 @@ function DownloadDialogController($scope,$rootScope, $mdDialog) {
 
 $rootScope.simulateQuery = false;
     $rootScope.isDisabled    = false;
-    $rootScope.patients = $firebaseArray(firebase.database().ref().child('patients'))
-    $rootScope.patients.$loaded(function(){
-      $rootScope.patients = $rootScope.patients.map( function (patient) {
-        patient.value = patient.name.toLowerCase();
-        return patient;
-      });
-    });
+    // $rootScope.patients = $firebaseArray(firebase.database().ref().child('patients'))
+    // $rootScope.patients.$loaded(function(){
+    //   $rootScope.patients = $rootScope.patients.map( function (patient) {
+    //     patient.value = patient.name.toLowerCase();
+    //     return patient;
+    //   });
+    // });
     
 
     $rootScope.querySearch   = querySearch;
@@ -608,8 +593,8 @@ $rootScope.simulateQuery = false;
      * remote dataservice call.
      */
     function querySearch (query) {
-      var results = query ? $rootScope.patients.filter( createFilterFor(query) ) : $rootScope.patients;
-      return results;
+      // var results = query ? $rootScope.patients.filter( createFilterFor(query) ) : $rootScope.patients;
+      // return results;
     }
     function searchTextChange(text) {
       console.log('Text changed to ' + text);
