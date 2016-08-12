@@ -1,0 +1,72 @@
+<md-content ng-controller="HomeController as home" flex layout-fill>
+<div class="radioSearch">
+  <div layout-padding>
+      <div layout="column">
+          <h2>Confirm Booking</h2>
+          <div ng-show="($root.activeSearch.rooms && $root.activeSearch.baths)" layout="row" layout-align="center center">
+      
+      <p class="service-total">${{(($root.activeSearch.rooms*15+55)+($root.activeSearch.baths*5+5))}}<br>
+        <span class="addon-total" ng-show="$root.activeSearch.additionalServicesTotal>0">{{"+$"+($root.activeSearch.additionalServicesTotal)}}</span></p>
+      <span flex="5"></span>
+      <div layout="column" layout-align="center center">
+        <p>{{$root.activeSearch.rooms}} room /{{$root.activeSearch.baths}} bath</p>
+        <md-button class="md-primary md-hue-1" ng-click="home.additionalServices()" style="height: 10px;">Additional Services</md-button>
+      </div>
+    </div>
+    <div ng-show="($root.activeSearch.additionalServices != null)" layout="column" class="md-whiteframe-z1" style="background:#fff">
+      <md-list flex class="md-dense">
+        <md-list-item class="md-2-line" ng-repeat="item in $root.activeSearch.additionalServices">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{item.name}}</h3>
+          <h4>${{item.value}}</h4>
+          </div>
+          <md-button ng-click="removeAdditionalItem($index,$root.activeSearch.additionalServices)" class="md-secondary md-icon-button">
+            <md-icon md-font-icon="icon-delete" ng-style="{'font-size':'24px'}"></md-icon>
+          </md-button>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+        
+      </md-list>
+      <!-- <div style="min-width:245px;" layout="column">
+        <p><strong>Disclaimer</strong><br>
+          <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">More</a></small></p>
+        
+      </div> -->
+    </div>
+    </div>
+  </div>
+    
+
+    <div ng-show="($root.activeSearch.additionalServices != null)" layout="column" class="md-whiteframe-z1" style="background:#fff">
+      <md-list flex class="md-dense">
+        <md-list-item class="md-2-line" ng-repeat="item in $root.activeSearch.additionalServices">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{item.name}}</h3>
+          <h4>${{item.value}}</h4>
+          </div>
+          <md-button ng-click="removeAdditionalItem($index,$root.activeSearch.additionalServices)" class="md-secondary md-icon-button">
+            <md-icon md-font-icon="icon-delete" ng-style="{'font-size':'24px'}"></md-icon>
+          </md-button>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+        
+      </md-list>
+      <!-- <div style="min-width:245px;" layout="column">
+        <p><strong>Disclaimer</strong><br>
+          <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">More</a></small></p>
+        
+      </div> -->
+    </div>
+  </div>
+  <div layout="column">
+  <md-divider ng-show="$root.gAddress"></md-divider>
+  <md-button ng-disabled="$root.gAddress" ng-click="doSearch($event)" class="" style="font-size:padding:5px;margin-top:20px;">
+  <img src="https://uphold.com/en/developer/api/documentation/images/buttons/uphold-connect-with-white-gray@1x.png">
+</md-button>
+<md-divider></md-divider>
+<md-button ng-disabled="$root.gAddress" ng-click="doSearch($event)" class="md-raised" style="font-size:padding:5px;margin-top:20px;">
+  Pay with Credit Card
+</md-button>
+    </div>
+    
+  </md-content>

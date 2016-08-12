@@ -1,14 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
+<<<<<<< HEAD
 <widget id="io.melle.dealspace" version="0.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DealSpace</name>
     <description>
         realestatate application
+=======
+<widget id="io.melle.dgcleaning" version="0.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>DG Cleaning Services</name>
+    <description>
+        Philadelphia Area Cleaning Services
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
     </description>
     <author email="l@emelle.me" href="http://cordova.io">
         -melle.io-
     </author>
     <content src="index.html" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-inappbrowser" />
     <access origin="*" />
@@ -22,6 +28,16 @@
     <icon height="40" src="res/icon-small.png" width="40" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <!-- you can use any density that exists in the Android project -->
+    <splash src="res/screens/android/screen-hdpi-portrait.png" density="land-hdpi"/>
+    <splash src="res/screens/android/screen-ldpi-portrait.png" density="land-ldpi"/>
+    <splash src="res/screens/android/screen-mdpi-portrait.png" density="land-mdpi"/>
+    <splash src="res/screens/android/screen-xhdpi-portrait.png" density="land-xhdpi"/>
+
+    <splash src="res/screens/android/splash-hdpi-portrait.png" density="port-hdpi"/>
+    <splash src="res/screens/android/splash-ldpi-portrait.png" density="port-ldpi"/>
+    <splash src="res/screens/android/splash-mdpi-portrait.png" density="port-mdpi"/>
+    <splash src="res/screens/android/splash-xhdpi-portrait.png" density="port-xhdpi"/>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

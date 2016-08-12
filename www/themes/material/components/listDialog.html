@@ -1,7 +1,8 @@
-<md-dialog aria-label="Mango (Fruit)" ng-cloak>
+
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
   <form>
     <md-toolbar>
-      <div>
+      <div class="md-toolbar-tools">
         <h2>Nearby Properties</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="cancel()">
@@ -15,6 +16,7 @@
           <md-list-item class="secondary-button-padding" ng-repeat="item in listItems">
             <p ng-show="item.full_address">{{(item.full_address) ? item.full_address : item.FullAddress}}</p>
             <p ng-show="item.PremiseAdd">{{(item.PremiseAdd)}}</p>
+            
             <span flex></span>
             <md-button class="md-secondary" ng-click="open($index)">Go</md-button>
           </md-list-item>

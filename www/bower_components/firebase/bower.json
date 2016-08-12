@@ -1,6 +1,10 @@
 {
   "name": "firebase",
+<<<<<<< HEAD
   "version": "3.0.5",
+=======
+  "version": "3.2.1",
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
   "homepage": "https://firebase.google.com",
   "authors": [
     "Firebase <firebase-support@google.com>"

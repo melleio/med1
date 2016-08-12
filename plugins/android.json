@@ -8,6 +8,7 @@
     },
     "installed_plugins": {
         "cordova-plugin-calendar": {
+<<<<<<< HEAD
             "PACKAGE_NAME": "io.melle.dealspace"
         },
         "cordova-plugin-camera": {
@@ -40,11 +41,39 @@
         "com.telerik.stripe": {
             "API_KEY": "sk_test_XcJhFuzseQSorL2BBEdpdHrD",
             "PACKAGE_NAME": "io.melle.dealspace"
+=======
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+<<<<<<< HEAD
             "PACKAGE_NAME": "io.melle.dealspace"
+=======
+            "PACKAGE_NAME": "io.melle.dgcleaning"
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
         }
     }
 }

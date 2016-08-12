@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <md-content ng-controller="HomeCtrl as home" flex layout-fill>
+=======
+<md-content ng-controller="HomeController as home" flex layout-fill>
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
 <div class="radioSearch">
   <div layout-padding>
       <div  ng-show="(selectedSearchId == 1)" style="min-width:310px;" layout="column">
@@ -14,7 +18,11 @@
           md-item-text="item.name"
           md-min-length="0"
           ng-keyup="checkInput($event)"
+<<<<<<< HEAD
           placeholder="Enter an Address or Zipcode"
+=======
+          placeholder="Enter your address"
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
           md-menu-class="autocomplete-custom-template">
         <md-item-template>
           <span class="item-title">
@@ -23,12 +31,17 @@
           </span>
           <span class="item-metadata">
             <span class="item-metastat">
+<<<<<<< HEAD
               MRN: <strong>{{item.mrn}}</strong>
+=======
+              <strong>{{item.mrn}}</strong>
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
             </span>
           </span>
         </md-item-template>
         
       </md-autocomplete>
+<<<<<<< HEAD
       </div>
       <div layout="column">
           <md-select ng-click="closeKeyboard($event)" ng-show="$root.zipSearch || selectedSearchId == 2" placeholder="Property/Parcel Type" ng-model="$root.activeSearch.parcel_type" md-on-open="loadParcelTypes()" style="min-width: 200px;padding: 0px">
@@ -64,6 +77,66 @@
           <div class="md-list-item-text" layout="column" style="text-align:center" layout-fill>
             <h3 style="color:#fff;text-shadow:1px 1px 1px #000;text-align:center">{{ item.who }}</h3>
           </div>
+=======
+        <md-input-container>
+        <label>Unit #</label>
+        <input ng-model="$root.activeSearch.unit">
+      </md-input-container>
+      </div>
+      <div layout="column">
+          <md-select ng-click="closeKeyboard($event)" placeholder="Location Type" ng-model="$root.activeSearch.location_type" md-on-open="loadParcelTypes()" style="min-width: 200px;padding: 0px">
+            <md-option ng-disabled="s.disabled" ng-value="s" ng-repeat="s in parcel_types">{{s.name}}</md-option>
+          </md-select>
+          <div layout="row">
+      <md-input-container style="margin-right: 10px;">
+        <label>Rooms</label>
+        
+        <md-select class="md-accent" name="home.activeSearch.bedrooms" ng-model="$root.activeSearch.rooms" required>
+        <md-option ng-repeat="item in home.config.bedrooms" md-on-demand
+          class="repeated-item" value="{{item}}">{{item}}</md-option>
+        
+      </md-select>
+      </md-input-container>
+      <span flex="25"></span>
+      <md-input-container>
+        <label>Bathrooms</label>
+        <md-select name="myModel" ng-model="$root.activeSearch.baths" required>
+        <md-option ng-repeat="item in home.config.bathrooms" md-on-demand
+          class="repeated-item" value="{{item}}">{{item}}</md-option>
+        
+      </md-select>
+      </md-input-container>
+    </div>
+    
+      </div>
+      <md-datepicker ng-model="$root.activeSearch.requestedDate" md-placeholder="Select a Date" md-min-date="$root.minDate" md-max-date="$root.maxDate"></md-datepicker>
+      <md-select ng-click="closeKeyboard($event)" placeholder="Preferred time of day" ng-model="$root.activeSearch.time_of_day" md-on-open="loadTimesOfDay()" style="min-width: 200px;padding: 0px">
+        <md-option ng-disabled="s.disabled" ng-value="s" ng-repeat="s in times_of_day">{{s.name}}</md-option>
+      </md-select>
+    </div>
+    
+    <div ng-show="($root.activeSearch.rooms && $root.activeSearch.baths)" layout="row" layout-align="center center">
+      
+      <p class="service-total">${{(($root.activeSearch.rooms*15+55)+($root.activeSearch.baths*5+5))}}<br>
+        <span class="addon-total" ng-show="$root.activeSearch.additionalServicesTotal>0">{{"+$"+($root.activeSearch.additionalServicesTotal)}}</span></p>
+      <span flex="5"></span>
+      <div layout="column" layout-align="center center">
+        <p>{{$root.activeSearch.rooms}} room /{{$root.activeSearch.baths}} bath</p>
+        <md-button class="md-primary md-hue-1" ng-click="home.additionalServices()" style="height: 10px;">Additional Services</md-button>
+      </div>
+    </div>
+    <div ng-show="($root.activeSearch.additionalServices != null)" layout="column" class="md-whiteframe-z1" style="background:#fff">
+      <md-list flex class="md-dense">
+        <md-list-item class="md-2-line" ng-repeat="item in $root.activeSearch.additionalServices">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{item.name}}</h3>
+          <h4>${{item.value}}</h4>
+          </div>
+          <md-button ng-click="removeAdditionalItem($index,$root.activeSearch.additionalServices)" class="md-secondary md-icon-button">
+            <md-icon md-font-icon="icon-delete" ng-style="{'font-size':'24px'}"></md-icon>
+          </md-button>
+          <md-divider ng-if="!$last"></md-divider>
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
         </md-list-item>
         
       </md-list>
@@ -74,9 +147,15 @@
       </div> -->
     </div>
   </div>
+<<<<<<< HEAD
   <div layout="column" layout-fill>
   <md-divider ng-show="$root.gAddress && selectedSearchId != 2"></md-divider>
   <md-button ng-show="$root.activeRegion && selectedSearchId == 2 && $root.activeSearch.parcel_type" ng-click="doSearch($event)" class="md-raised md-warn" style="font-size:padding:5px;margin-top:20px;">Search</md-button>
+=======
+  <div layout="column">
+  <md-divider ng-show="$root.gAddress"></md-divider>
+  <md-button ng-disabled="$root.gAddress" ng-click="checkout($event)" class="md-raised md-primary md-hue-1" style="font-size:padding:5px;margin-top:20px;">Book</md-button>
+>>>>>>> 44174063a44bf3db2986f0b19630b189abb1eb62
     </div>
     
   </md-content>

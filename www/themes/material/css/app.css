@@ -30,3 +30,30 @@ div.radioSearch {
   margin: 16px; }
 .property-images md-virtual-repeat-container {
    }
+
+ .radioSearch .md-checked {
+  background-color: #ECFAFB;
+  border-radius: 2px; }
+
+  .radioSearch .row {
+  border-bottom: 1px dashed #ddd; }
+
+  .radioSearch div.row:last-child {
+   }
+   .service-total{
+  padding: 10px 10px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Abril Fatface';
+    border: 1px dashed #ccc;
+    background: #FDFDFD;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    color: green;
+
+}
+
+.addon-total{
+	font-size: 24px;
+	    color: blue;
+}

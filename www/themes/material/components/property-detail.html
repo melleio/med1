@@ -1,37 +1,20 @@
 
-<md-content ng-controller="PropertyCtrl as prop">
+<md-content ng-controller="PropertyCtrl as ul">
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="Detail">
         <md-content class="md-padding">
-          
-          <div class="md-padding property-content md-whiteframe-3dp" layout="row" layout-xs="column">
+          <h1 class="title">{{$root.currentParcel.full_address}}<span style="float:right"><md-icon md-font-icon="icon-star-outline"></md-icon></span></h1>
+          <div class="md-padding property-content" layout="row" layout-xs="column">
             <div flex flex-gt-xs="50" layout="column" style="font-size: 0.9em;">
-              <p><strong>Account Number:</strong><span style="float:right">{{$root.currentParcel.account_number}}</span>
-              <br><strong>Full Address:</strong><span style="float:right">{{$root.currentParcel.full_address}}</span>
-              <br><strong>Zip Code:</strong><span style="float:right">{{$root.currentParcel.zip}}</span>
-              <br>
-              <a ng-click="neighborhoodList(currentParcel.neighborhood.listname)"><strong>Neighborhood:</strong><span style="float:right">{{$root.currentParcel.neighborhood.listname}}</span></a></p>
-              <md-divider></md-divider>
-              <p>
-                <span ><md-button class="md-raised" ng-click="showOwnerMailingAddress($root.currentParcel.ownership.mailing_address)">Mailing Address</md-button></span></md-button><br>
-                <strong><small>Owners:</small></strong>
-                <span style="float:right;" ng-repeat="owner in $root.currentParcel.ownership.owners"><md-button class="md-accent md-hue-2" ng-click="showOwnerInfo(owner)">{{owner}}</md-button></span></md-button>
-              </p>
-              <md-divider></md-divider>
-              <p><strong>Current Market Value:</strong> <md-button class="md-accent md-hue-2" ng-click="showOwnerMailingAddress($root.currentParcel.ownership.mailing_address)">${{($root.currentParcel.valuation_history[0].market_value | number:0)+" ("+$root.currentParcel.valuation_history[0].certification_year+")"}}</md-button></span></md-button></p>
               <p><strong>Last Sale Date:</strong> <span style="float:right;">{{$root.currentParcel.sales_information.sales_date | cleandate}}</span></p>
              <p><strong>Last Sale Price:</strong> <span style="float:right;">{{$root.currentParcel.sales_information.sales_price | formatMoney}}</span></p>
-             <p><strong>Year Built:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.year_built}}</span></p>
+              <p><strong>Building Code:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.building_code}}</span></p>
               <p><strong>Description:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.description}}</span></p>
-              <p><strong>Zoning Code:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.zoning}}</span></p>
-              <p><strong>Zoning Description:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.zoning_description}}</span></p>
-              <p><strong>Land Area:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.land_area | number:0}} sqft</span></p>
-              <p><strong>Frontage:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.frontage | number:0}} ft</span></p>
-              <p><strong>Depth:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.depth | number:0}} ft</span></p>
+              <p><strong>Homestead:</strong> <span style="float:right;">{{($root.currentParcel.characteristics.homestead == null) ? "None ": $root.currentParcel.characteristics.homestead}}</span></p>
+              <p><strong>Land Area:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.improvement_area | number:0}} sqft</span></p>
               <p><strong>Improvement Area:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.improvement_area | number:0}} sqft</span></p>
               <p ng-show="$root.currentParcel.characteristics.improvement_description !=''"><strong>Improvement Description:</strong> <span style="float:right;">{{$root.currentParcel.characteristics.improvement_description}}</span></p>
             </div>
-            <span flex-gt-xs="25"></span>
             <div flex flex-order-xs="-1" flex-gt-xs="50" layout="column">
               <img ng-src="{{$root.currentParcel.staticImageUrl}}" class="full-width" />
             </div>
@@ -41,17 +24,9 @@
       </md-tab>
       <md-tab label="Notes">
         <md-content class="md-padding">
-        <md-content class="property-images" layout="column" ng-show="$root.currentParcel.images">
-        <md-virtual-repeat-container id="horizontal-container" md-orient-horizontal>
-            <div md-virtual-repeat="item in prop.items"
-                class="repeated-item" flex>
-              <img src="https://placeholdit.imgix.net/~text?txtsize=23&txt=310%C3%97150&w=100&h=150">
-            </div>
-          </md-virtual-repeat-container>
-        </md-content>
+
           <h1 class="title">Notes</h1>
           <md-divider></md-divider>
-          
           <div>
             <md-button class="md-icon-button" ng-click="addNotes($event)" aria-label="Notes">
             <md-tooltip md-direction="bottom">
@@ -59,7 +34,9 @@
             </md-tooltip>
               <md-icon md-font-icon="icon-note-add" ng-style="{'font-size':'24px'}" alt="more-options"></md-icon>
             </md-button>
-            <md-button class="md-icon-button" ng-click="takePicture($event)" aria-label="Picture">
+
+            <md-button class="md-icon-button" ng-click="addNotes($event)" aria-label="Notes">
+
             <md-tooltip md-direction="bottom">
               add a picture
             </md-tooltip>

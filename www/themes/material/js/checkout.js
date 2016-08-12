@@ -1,19 +1,8 @@
 "use strict";
-ang.controller('HomeController', 
+ang.controller('CheckoutController', 
 	function($rootScope,$scope,$location,$mdDialog){
 		var vm = this;
-		$rootScope.myDate = new Date();
-		$rootScope.minDate = $rootScope.myDate;
-	  	$rootScope.maxDate = new Date(
-		$rootScope.myDate.getFullYear(),
-		$rootScope.myDate.getMonth() + 2,
-		$rootScope.myDate.getDate());
-		if($rootScope.activeSearch !== undefined)
-			$rootScope.activeSearch.additionalServices =[];
-		else
-			$rootScope.activeSearch = {};
-
-		$rootScope.activeSearch.additionalServices = [];
+		$rootScope.additionalServices =[];
 		var parentEl = angular.element(document.body);
 		$rootScope.addonservices=[
 	        {name:"Laundry",value:10,amount:1},
@@ -31,23 +20,14 @@ ang.controller('HomeController',
 			];
 		}
 
-		$scope.loadTimesOfDay = function() {
-		// Use timeout to simulate a 650ms request.
-			$scope.times_of_day = [
-			  {value:0,disabled:false,selected:false,name: "Early Morning"},
-			  {value:1,disabled:false,selected:false,name: "Late Morning/Mid Afternoon"},
-			  {value:2,disabled:false,selected:false,name: "Late Afternoon/Evening"}
-			];
-		}
-
 		$scope.removeAdditionalItem=function (item, list) {
 			
 			list.splice(item, 1);
 
-			$rootScope.activeSearch.additionalServices = list;
-			$rootScope.activeSearch.additionalServicesTotal =0;
+			$rootScope.additionalServices = list;
+			$rootScope.additionalServicesTotal =0;
 				angular.forEach(list, function(v, k) {
-        		$rootScope.activeSearch.additionalServicesTotal += v.value;
+        		$rootScope.additionalServicesTotal += v.value;
         	});
 		};
 		vm.additionalServices = function($event){
@@ -76,7 +56,7 @@ ang.controller('HomeController',
 	        	
 	        // }
 
-	        scope.selected = $rootScope.activeSearch.additionalServices;
+	        scope.selected = $rootScope.additionalServices;
 			scope.toggle = function (item, list) {
 				var idx = list.indexOf(item);
 				if (idx > -1) {
@@ -85,10 +65,10 @@ ang.controller('HomeController',
 				else {
 				  list.push(item);
 				}
-				$rootScope.activeSearch.additionalServices = list;
-				$rootScope.activeSearch.additionalServicesTotal =0;
+				$rootScope.additionalServices = list;
+				$rootScope.additionalServicesTotal =0;
 					angular.forEach(list, function(v, k) {
-	        		$rootScope.activeSearch.additionalServicesTotal += v.value;
+	        		$rootScope.additionalServicesTotal += v.value;
 	        	});
 			};
 			scope.exists = function (item, list) {
@@ -115,7 +95,12 @@ ang.controller('HomeController',
 	    }
 
 
-		
+		vm.myDate = new Date();
+		vm.minDate = vm.myDate;
+	  	vm.maxDate = new Date(
+		vm.myDate.getFullYear(),
+		vm.myDate.getMonth() + 2,
+		vm.myDate.getDate());
 		vm.config = {
 			"bedrooms":[1,2,3,4,5,6,7,8],
 			"bathrooms":[0,1,2,3,4,5,6,7,8]
