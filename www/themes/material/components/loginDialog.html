@@ -1,22 +1,33 @@
-<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2 style="color:#fff">Login</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
-        </md-button>
+<md-dialog aria-label="List dialog">
+<form>
+<md-toolbar class="md-primary md-hue-1">
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">{{warning}}</h2>
+      <span flex></span>
+      <md-progress-circular ng-hide="{{test}}" class="md-accent" md-mode="indeterminate"></md-progress-circular>
+    </div>
+  </md-toolbar>
+<md-dialog-content layout="column" layout-padding layout="center center" layout-fill>
+
+      <div >
+
+        <md-input-container flex md-no-float>
+          <label>Email</label>
+          <input type="email" ng-model="email">
+        </md-input-container>
       </div>
-    </md-toolbar>
-    <md-dialog-content style="max-width:800px;max-height:810px; ">
-      <div layout="column">
-        <md-button ng-click="fbAuth($event)" class="md-raised md-primary md-hue-2" ng-style="{color:'#FFFFFF','background-color': '#3b5998',border: '1px solid #424242','font-size': '18px','min-width':'260px'}">Connect with Facebook</md-button>
-    <md-button ng-click="twAuth($event)" class="md-raised md-primary md-hue-2" ng-style="{color:'#FFFFFF','background-color': '#55acee',border: '1px solid #424242','font-size': '18px','min-width':'260px'}">Connect with Twitter</md-button>
-      </div>
-    </md-dialog-content>
-    <md-dialog-actions layout="row">
-      <md-button ng-click="cancel()" style="margin-right:20px;">
-        Cancel
-      </md-button>
+      <md-input-container flex md-no-float>
+        <label>Password</label>
+        <input type="password" ng-model="password">
+        <p><a href="">Forgot Password?</a></p>
+      </md-input-container>
+    
+      
+  </md-dialog-content>
+<md-dialog-actions layout="row">
+      <md-button class="md-raised md-primary" ng-click="register(event)">Register</md-button>
+      <span flex></span>
+      <md-button class="md-raised" ng-click="loginUser(event)">Log In</md-button>
     </md-dialog-actions>
+</form>
 </md-dialog>

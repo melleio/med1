@@ -7,21 +7,44 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
-        },
         "cordova-plugin-calendar": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "cordova-plugin-firebase": {
+            "PACKAGE_NAME": "io.melle.dealspace"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
+            "PACKAGE_NAME": "io.melle.dealspace"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
+            "PACKAGE_NAME": "io.melle.dealspace"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.melle.events.jumpin"
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "io.melle.dealspace"
+        },
+        "com.telerik.stripe": {
+            "API_KEY": "sk_test_XcJhFuzseQSorL2BBEdpdHrD",
+            "PACKAGE_NAME": "io.melle.dealspace"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.melle.dealspace"
+        }
+    }
 }

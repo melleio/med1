@@ -1,0 +1,92 @@
+
+<md-content ng-controller="PropertyCtrl as prop">
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Detail">
+        <md-content class="md-padding">
+          
+          <div class="md-padding property-content" layout="row" layout-xs="column">
+            <div flex flex-gt-xs="50" layout="column" style="font-size: 0.9em;">
+              <p><strong>ID:</strong><span style="float:right">{{$root.currentParcel.ADDRESS_ID}}</span>
+              <br><strong>Full Address:</strong><span style="float:right">{{$root.currentParcel.PremiseAdd}}</span>
+              <br><strong>Zip Code:</strong><span style="float:right">{{$root.currentParcel.Zip}}</span>
+              <br><strong>Land Use:</strong><span style="float:right">{{$root.currentParcel.land_use.DESCRIPTION}}</span>
+              <br><strong>Land Area:</strong><span style="float:right">{{$root.currentParcel.LandArea | number:0}} sqft</span></p>
+              <p><strong>Annual Tax:</strong> <span style="float:right;">${{$root.currentParcel.AnnualTax | number:0}}</span></p>
+              <p><strong>Total Due:</strong> <span style="float:right;">${{$root.currentParcel.TotalDueAmount | number:0}}</span></p>
+             <md-divider></md-divider>
+              <p><strong>Ownership:</strong><br> 
+                <span ><md-button class="md-raised" ng-click="showOwnerMailingAddress($root.currentParcel.ownership.mailing_address)">Mailing Address</md-button></span></md-button><br>
+                <strong><small>Owners:</small></strong>
+                <span ng-show="$root.currentParcel.OwnerName" style="float:right;"><md-button class="md-accent md-hue-2" ng-click="showOwnerInfo(owner)">{{$root.currentParcel.OwnerName}}</md-button></span>
+                <span ng-show="$root.currentParcel.OwnerName2" style="float:right;"><md-button class="md-accent md-hue-2" ng-click="showOwnerInfo(owner)">{{$root.currentParcel.OwnerName2}}</md-button></span>
+              </p>
+              <md-divider></md-divider>
+              <div ng-show="salesData">
+               <p><strong>Last Sale Date:</strong> <span style="float:right;">{{$root.currentParcel.LAST_SALE_DATE | cleanArcDate}}</span></p>
+             <p><strong>Last Sale Price:</strong> <span style="float:right;">${{$root.currentParcel.LAST_SALE_PRICE | number:0}}</span></p>
+             <md-divider></md-divider>
+             <p><small><strong>Appraised Land Value(base yr):</strong> <span style="float:right;">${{$root.currentParcel.APPRAISED_VALUE_BASEYEAR_LAND | number:0}}</span></small></p>
+             <p><small><strong>Appraised Bldg Value(base yr):</strong> <span style="float:right;">${{$root.currentParcel.APPRAISED_VALUE_BASEYEAR_BLDG | number:0}}</span></small></p>
+             <p><small><strong>Appraised Land Value (cur yr):</strong> <span style="float:right;">${{$root.currentParcel.APPRAISED_VALUE_CURRENT_LAND | number:0}}</span></small></p>
+             <p><small><strong>Appraised Imprv Value (cur yr):</strong> <span style="float:right;">${{$root.currentParcel.APPRAISED_VALUE_CURRENT_IMPR | number:0}}</span></small></p>
+             <p><small><strong>Appraised Value Total(cur yr):</strong> <span style="float:right;font-weight:bold">${{$root.currentParcel.APPRAISED_VALUE_CURRENT_TOTAL | number:0}}</span></small></p>
+              <p><small><strong>Appraised Land Value (prev yr):</strong> <span style="float:right;">${{$root.currentParcel.APPRAISED_VALUE_PRIOR_LAND | number:0}}</span></small></p>
+             <p><small><strong>Appraised Imprv Value (prev yr):</strong> <span style="float:right;">${{$root.currentParcel.APPRAISED_VALUE_PRIOR_IMPR | number:0}}</span></small></p>
+             <p><small><strong>Appraised Value Total(prev yr):</strong> <span style="float:right;font-weight:bold">${{$root.currentParcel.APPRAISED_VALUE_PRIOR_TOTAL | number:0}}</span></small></p>
+
+             <md-divider></md-divider>
+             <p><strong>Vacant Use:</strong> <span style="float:right;">{{$root.currentParcel.VACANT_USE}}</span></p>
+             <p><strong>Homestead:</strong> <span style="float:right;">{{$root.currentParcel.HOMESTEAD_DESCRIPTION}}</span></p>
+             <p><strong>Tax Rate:</strong> <span style="float:right;">{{$root.currentParcel.TAXRATE}}</span></p>
+             </div>
+            </div>
+            <div flex flex-order-xs="-1" flex-gt-xs="50" layout="column">
+              <img ng-show="$root.currentParcel.staticImageUrl" ng-src="{{$root.currentParcel.staticImageUrl}}" class="full-width" />
+            </div>
+          </div>
+          
+        </md-content>
+      </md-tab>
+      <md-tab label="Notes">
+        <md-content class="md-padding">
+        <md-content class="property-images" layout="column" ng-show="$root.currentParcel.images">
+        <md-virtual-repeat-container id="horizontal-container" md-orient-horizontal>
+            <div md-virtual-repeat="item in prop.items"
+                class="repeated-item" flex>
+              <img src="https://placeholdit.imgix.net/~text?txtsize=23&txt=310%C3%97150&w=100&h=150">
+            </div>
+          </md-virtual-repeat-container>
+        </md-content>
+          <h1 class="title">Notes</h1>
+          <md-divider></md-divider>
+          
+          <div>
+            <md-button class="md-icon-button" ng-click="addNotes($event)" aria-label="Notes">
+            <md-tooltip md-direction="bottom">
+              add a note
+            </md-tooltip>
+              <md-icon md-font-icon="icon-note-add" ng-style="{'font-size':'24px'}" alt="more-options"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="takePicture($event)" aria-label="Picture">
+            <md-tooltip md-direction="bottom">
+              add a picture
+            </md-tooltip>
+              <md-icon md-font-icon="icon-photo-camera" ng-style="{'font-size':'24px'}" alt="more-options"></md-icon>
+            </md-button>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Debts">
+        <md-content class="md-padding">
+          <h1 class="title">Debt Information</h1>
+          <md-divider></md-divider>
+        </md-content>
+      </md-tab>
+      <md-tab label="Permits">
+        <md-content class="md-padding">
+          <h1 class="title">Licensing &amp; Inspection</h1>
+          <md-divider></md-divider>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>

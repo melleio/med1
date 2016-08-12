@@ -1,0 +1,82 @@
+<md-content ng-controller="HomeCtrl as home" flex layout-fill>
+<div class="radioSearch">
+  <div layout-padding>
+      <div  ng-show="(selectedSearchId == 1)" style="min-width:310px;" layout="column">
+        <md-autocomplete
+          id="searchField"
+          ng-disabled="$root.isDisabled"
+          md-no-cache="$root.noCache"
+          md-selected-item="$root.selectedItem"
+          md-search-text-change="$root.searchTextChange($root.searchText)"
+          md-search-text="$root.searchText"
+          md-selected-item-change="$root.selectedItemChange(item)"
+          md-items="item in $root.querySearch($root.searchText)"
+          md-item-text="item.name"
+          md-min-length="0"
+          ng-keyup="checkInput($event)"
+          placeholder="Enter an Address or Zipcode"
+          md-menu-class="autocomplete-custom-template">
+        <md-item-template>
+          <span class="item-title">
+            <md-icon md-font-icon="icon-person"></md-icon>
+            <span> {{item.name}} </span>
+          </span>
+          <span class="item-metadata">
+            <span class="item-metastat">
+              MRN: <strong>{{item.mrn}}</strong>
+            </span>
+          </span>
+        </md-item-template>
+        
+      </md-autocomplete>
+      </div>
+      <div layout="column">
+          <md-select ng-click="closeKeyboard($event)" ng-show="$root.zipSearch || selectedSearchId == 2" placeholder="Property/Parcel Type" ng-model="$root.activeSearch.parcel_type" md-on-open="loadParcelTypes()" style="min-width: 200px;padding: 0px">
+            <md-option ng-value="s" ng-repeat="s in parcel_types">{{s.name}}</md-option>
+          </md-select>
+
+
+          <md-input-container ng-show="$root.activeRegion && selectedSearchId == 2 && $root.neighborhoods">
+            <label>Neighborhood</label>
+            <md-select md-on-open="loadNeighborhoods()" ng-model="$root.activeSearch.neighborhoods" multiple>
+                <md-option ng-value="n.cartodb_id" ng-repeat="n in $root.neighborhoods">{{n.listname}}</md-option>
+            </md-select>
+          </md-input-container>
+      </div>
+    </div>
+    <md-radio-group ng-model="selectedSearchId" ng-change="searchTypeChange($event)">
+      <div ng-repeat='ss in searchOptions' class="row">
+        <div flex layout='row' layout-padding layout-align="start center" >
+          
+          <md-radio-button flex
+              ng-value="ss.id"
+              
+              class="md-primary" >
+              {{ss.title}}
+          </md-radio-button>
+        </div>
+      </div>
+    </md-radio-group>
+
+    <div ng-show="(selectedSearchId == 2)" layout="column" class="md-whiteframe-z1" style="background:#fff">
+      <md-list flex>
+        <md-list-item ng-hide="item.disable" ng-repeat="item in todos" ng-click="searchByCity($event,item.city)" ng-style="{background:'url({{item.bgUrl}})'}">
+          <div class="md-list-item-text" layout="column" style="text-align:center" layout-fill>
+            <h3 style="color:#fff;text-shadow:1px 1px 1px #000;text-align:center">{{ item.who }}</h3>
+          </div>
+        </md-list-item>
+        
+      </md-list>
+      <!-- <div style="min-width:245px;" layout="column">
+        <p><strong>Disclaimer</strong><br>
+          <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">More</a></small></p>
+        
+      </div> -->
+    </div>
+  </div>
+  <div layout="column" layout-fill>
+  <md-divider ng-show="$root.gAddress && selectedSearchId != 2"></md-divider>
+  <md-button ng-show="$root.activeRegion && selectedSearchId == 2 && $root.activeSearch.parcel_type" ng-click="doSearch($event)" class="md-raised md-warn" style="font-size:padding:5px;margin-top:20px;">Search</md-button>
+    </div>
+    
+  </md-content>

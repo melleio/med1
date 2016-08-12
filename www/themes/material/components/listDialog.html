@@ -1,0 +1,32 @@
+<md-dialog aria-label="Mango (Fruit)" ng-cloak>
+  <form>
+    <md-toolbar>
+      <div>
+        <h2>Nearby Properties</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-list ng-cloak>
+          <md-list-item class="secondary-button-padding" ng-repeat="item in listItems">
+            <p ng-show="item.full_address">{{(item.full_address) ? item.full_address : item.FullAddress}}</p>
+            <p ng-show="item.PremiseAdd">{{(item.PremiseAdd)}}</p>
+            <span flex></span>
+            <md-button class="md-secondary" ng-click="open($index)">Go</md-button>
+          </md-list-item>
+        </md-list>
+ 
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       back
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

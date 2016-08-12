@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.melle.med.v1" version="0.1.501" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>medApp</name>
+<widget id="io.melle.dealspace" version="0.2.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>DealSpace</name>
     <description>
-        dev app
+        realestatate application
     </description>
     <author email="l@emelle.me" href="http://cordova.io">
         -melle.io-
@@ -19,27 +19,24 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <icon src="res/icon-small.png" width="40" height="40"/>
+    <icon height="40" src="res/icon-small.png" width="40" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="StatusBarBackgroundColor" value="#000000" />
     </platform>
     <preference name="orientation" value="portrait" />
     <engine name="android" spec="~5.1.1" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <!-- you can use any density that exists in the Android project -->
-
-        
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-
-        <!-- iPhone 6 / 6+ -->
-        
     </platform>
+    <plugin name="cordova-plugin-firebase" spec="~0.1.9" />
 </widget>

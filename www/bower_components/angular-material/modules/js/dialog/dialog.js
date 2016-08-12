@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.1.0-rc.5-master-a0ca139
+ * v1.1.0-rc.5-master-7f01138
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -538,8 +538,8 @@ function MdDialogProvider($$interimElementProvider) {
   // Elements to capture and redirect focus when the user presses tab at the dialog boundary.
   var topFocusTrap, bottomFocusTrap;
 
-  advancedDialogOptions.$inject = ["$mdDialog", "$mdTheming", "$mdConstant"];
-  dialogDefaultOptions.$inject = ["$mdDialog", "$mdAria", "$mdUtil", "$mdConstant", "$animate", "$document", "$window", "$rootElement", "$log", "$injector"];
+  advancedDialogOptions.$inject = ["$mdDialog", "$mdConstant"];
+  dialogDefaultOptions.$inject = ["$mdDialog", "$mdAria", "$mdUtil", "$mdConstant", "$animate", "$document", "$window", "$rootElement", "$log", "$injector", "$mdTheming"];
   return $$interimElementProvider('$mdDialog')
     .setDefaults({
       methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose',
@@ -563,7 +563,7 @@ function MdDialogProvider($$interimElementProvider) {
     });
 
   /* ngInject */
-  function advancedDialogOptions($mdDialog, $mdTheming, $mdConstant) {
+  function advancedDialogOptions($mdDialog, $mdConstant) {
     return {
       template: [
         '<md-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}" ng-class="dialog.css">',
@@ -611,15 +611,17 @@ function MdDialogProvider($$interimElementProvider) {
       },
       controllerAs: 'dialog',
       bindToController: true,
-      theme: $mdTheming.defaultTheme()
     };
   }
 
   /* ngInject */
-  function dialogDefaultOptions($mdDialog, $mdAria, $mdUtil, $mdConstant, $animate, $document, $window, $rootElement, $log, $injector) {
+  function dialogDefaultOptions($mdDialog, $mdAria, $mdUtil, $mdConstant, $animate, $document, $window, $rootElement,
+                                $log, $injector, $mdTheming) {
+
     return {
       hasBackdrop: true,
       isolateScope: true,
+      onCompiling: beforeCompile,
       onShow: onShow,
       onShowing: beforeShow,
       onRemove: onRemove,
@@ -653,7 +655,15 @@ function MdDialogProvider($$interimElementProvider) {
       }
     };
 
+    function beforeCompile(options) {
+      // Automatically apply the theme, if the user didn't specify a theme explicitly.
+      // Those option changes need to be done, before the compilation has started, because otherwise
+      // the option changes will be not available in the $mdCompilers locales.
+      detectTheming(options);
+    }
+
     function beforeShow(scope, element, options, controller) {
+
       if (controller) {
         controller.mdHtmlContent = controller.htmlContent || options.htmlContent || '';
         controller.mdTextContent = controller.textContent || options.textContent ||
@@ -696,8 +706,17 @@ function MdDialogProvider($$interimElementProvider) {
         element = angular.element(contentEl);
       }
 
+      var dialogElement = element.find('md-dialog');
+
+      // Once a dialog has `ng-cloak` applied on his template the dialog animation will not work properly.
+      // This is a very common problem, so we have to notify the developer about this.
+      if (dialogElement.hasClass('ng-cloak')) {
+        var message = '$mdDialog: using `<md-dialog ng-cloak >` will affect the dialog opening animations.';
+        $log.warn( message, element[0] );
+      }
+
       captureParentAndFromToElements(options);
-      configureAria(element.find('md-dialog'), options);
+      configureAria(dialogElement, options);
       showBackdrop(scope, element, options);
 
       return dialogPopIn(element, options)
@@ -809,6 +828,22 @@ function MdDialogProvider($$interimElementProvider) {
       }
     }
 
+    function detectTheming(options) {
+      // Only detect the theming, if the developer didn't specify the theme specifically.
+      if (options.theme) return;
+
+      options.theme = $mdTheming.defaultTheme();
+
+      if (options.targetEvent && options.targetEvent.target) {
+        var targetEl = angular.element(options.targetEvent.target);
+
+        // Once the user specifies a targetEvent, we will automatically try to find the correct
+        // nested theme.
+        options.theme = (targetEl.controller('mdTheme') || {}).$mdTheme || options.theme;
+      }
+
+    }
+
     /**
      * Capture originator/trigger/from/to element information (if available)
      * and the parent container for the dialog; defaults to the $rootElement
@@ -828,6 +863,7 @@ function MdDialogProvider($$interimElementProvider) {
           if ( options.targetEvent ) {
             options.origin   = getBoundingClientRect(options.targetEvent.target, options.origin);
           }
+
 
           /**
            * Identify the bounding RECT for the target element
