@@ -1,0 +1,52 @@
+<md-dialog aria-label="Add Note">
+<md-toolbar class="md-primary md-hue-1">
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">Add a Note</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout-padding>
+   
+   <div class="dialog-content">
+        <md-autocomplete
+            ng-disabled="$root.isDisabled"
+            md-no-cache="$root.noCache"
+            md-selected-item="$root.noteCategory"
+            md-search-text-change="$root.searchNoteChange($root.catTex)"
+            md-search-text="$root.catTex"
+            md-selected-item-change="$root.selectedNoteItemChange(item)"
+            md-items="item in $root.noteCategorySearch($root.catTex)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Category"
+            md-menu-class="autocomplete-custom-template">
+          <md-item-template>
+            <span class="item-title">
+              <md-icon md-font-icon="icon-list"></md-icon>
+              <span> {{item.name}} </span>
+            </span>
+            
+          </md-item-template>
+          <md-not-found>
+          <a ng-click="$root.addNoteCategory($event,$root.catTex)">Category not found.
+          Add it!</a>
+        </md-not-found>
+        </md-autocomplete>
+
+
+      
+      <md-input-container flex>
+        <label>Note</label>
+        <textarea style="width:460px" ng-model="newStatus.note" columns="2" md-maxlength="200"></textarea>
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  
+  <md-dialog-actions layout="row">
+    <md-button ng-click="hide()">
+     Cancel
+    </md-button>
+    <md-button ng-click="answer('save')" class="md-primary">
+      Save
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>

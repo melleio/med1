@@ -1,0 +1,38 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Colors!</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <div class="md-dialog-content">
+        <h3>Color History</h3>
+        <md-grid-list md-on-layout="adjustGrid($event)" flex="66" flex-sm="80"
+            md-cols-gt-md="4" md-cols-sm="4" md-cols-md="4"
+            md-row-height-gt-md="1:1" md-row-height="4:3"
+            md-gutter-gt-md="26px" md-gutter-gt-sm="8px" md-gutter="4px">
+          <md-grid-tile
+          ng-click="updateBackground($event,index)"
+              ng-repeat="(index,color) in $root.colorHistory"
+              ng-style="{
+                      'background': color,
+                      'border-radius': '50%',
+                      'border': '2px solid rgba(234, 233, 233, 0.68)'
+
+                    }"
+              md-colspan-gt-sm="1"
+              md-rowspan-gt-sm="1">
+          </md-grid-tile>
+        </md-grid-list>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Done
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

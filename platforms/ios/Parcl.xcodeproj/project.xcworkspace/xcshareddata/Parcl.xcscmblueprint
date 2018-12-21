@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8285A267950572251FF62B2AEB01478F7D53257D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8285A267950572251FF62B2AEB01478F7D53257D" : 9223372036854775807,
+    "818B9CB42709956D41DDBC4450B8E3F6150EAD76" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FFD8AE45-A4C8-43E6-A422-39A32C7CA944",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8285A267950572251FF62B2AEB01478F7D53257D" : "app\/",
+    "818B9CB42709956D41DDBC4450B8E3F6150EAD76" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Parcl",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "platforms\/ios\/Parcl.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/space-deals.maps.melle.io\/~\/git\/space.git\/",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "818B9CB42709956D41DDBC4450B8E3F6150EAD76"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:melleio\/med1.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8285A267950572251FF62B2AEB01478F7D53257D"
+    }
+  ]
+}

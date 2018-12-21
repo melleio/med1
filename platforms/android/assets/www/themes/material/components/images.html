@@ -1,0 +1,49 @@
+<div ng-cloak layout-xs="column" layout-fill layout-align="center center" style="background-color: #c2c2c2;">
+			<md-content style="background-color: #fff !important;" layout-align="center center" class="md-whiteframe-z1" flex="75" flex-xs="100" layout="column">
+				
+				<div layout-fill>
+				    <md-content ng-cloak class="md-whiteframe-z2" layout-align="center center">
+					    <md-card ng-repeat="image in $root.allImages | limitTo:100">
+					        <md-card-header>
+					          <md-card-avatar>
+					            <img ng-src="{{image.thumbnail_image_url}}"/>
+					          </md-card-avatar>
+					          <md-card-header-text flex>
+					            <span class="md-title">{{image.full_name}}</span>
+					            <div layout="row">
+						            <img src="./img/instagram.png" style="height: 15px;width: 15px;margin: 3px 5px;">
+						            <span class="md-subhead">{{image.username}}</span>
+						        </div>
+					          </md-card-header-text>
+					          <span flex></span>
+					          <md-button ng-click="sendToGarment($event)" class="md-icon-button md-accent" aria-label="Share">
+					            <md-icon md-font-icon="icon-accessibility"></md-icon>
+					          </md-button>
+					        </md-card-header>
+					        <img style="height:360px!important" ng-src="{{image.standard_image_url}}" class="md-card-image" alt="Image">
+					        <md-card-title>
+					          <md-card-title-text>
+					            <span class="md-headline"></span>
+					          </md-card-title-text>
+					        </md-card-title>
+					        <md-card-content>
+					          <p hide show-gt-xs>
+					            {{image.caption}}
+					          </p>
+					        </md-card-content>
+					        <md-card-actions layout="row" layout-align="start center">
+					        <md-button ng-click="$root.sendToGarment($event,image.image_id)" class="md-primary" aria-label="Share">
+					            Send to garment
+					          </md-button>
+					          <span flex></span>
+					          <md-button ng-click="removeItem($event)" class="md-icon-button md-primary md-hue-3" aria-label="Share">
+					            <md-icon md-font-icon="icon-visibility_off"></md-icon>
+					          </md-button>
+					        </md-card-actions>
+					      </md-card>
+					</md-content>
+				</div>
+			</md-content>
+
+
+		</div>

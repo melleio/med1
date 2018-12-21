@@ -1,0 +1,60 @@
+<md-content aria-label="List dialog" layout-fill ng-controller="ClaimCtrl as claim">
+<form>
+  <md-toolbar class="md-primary md-hue-1">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" ng-click="ul.goBack()">
+      <md-icon md-font-icon="icon-arrow_back" aria-label="Close dialog" ng-style="{'font-size':'24px'}"></md-icon>
+    </md-button>
+      <h4 class="md-toolbar-tools"><span class="md-flex">My Parcl<br>
+        <small>{{address}}</small></span></h4>
+      <span flex></span>
+      <!-- <md-progress-circular ng-hide="{{test}}" class="md-accent" md-mode="indeterminate"></md-progress-circular> -->
+    </div>
+  </md-toolbar>
+  <div ng-show="!myParcl" layout="column" layout-padding layout="center center">
+    <div layout="row">
+    <md-select flex ng-model="myParclStatus" placeholder="I am a(n)" class="md-no-underline" required md-no-asterisk="false">
+        <md-option value="Owner">Owner</md-option>
+        <md-option disabled value="Agent">Agent</md-option>
+        <md-option disabled value="Manager">Property Manager</md-option>
+        <md-option disabled value="Tenant">Tenant</md-option>
+        <md-option disabled value="Other">Other</md-option>
+      </md-select>
+      <span flex="5"></span>
+      <md-icon md-font-icon="icon-help" aria-label="Close dialog" ng-style="{'font-size':'24px'}"></md-icon>
+    </div>
+      <small>of <strong>{{address}}</strong></small>
+    <md-input-container ng-show="myParclStatus == 'Other'" flex md-no-float>
+      <label>Other</label>
+      <input type="text" ng-model="myParclStatus">
+    </md-input-container>
+    <p ><small>Identity verification required for this action.</small></p>
+    <md-divider></md-divider>
+
+    <a ng-hide="$root.fireUser.wallet.uphold" class="md-primary md-hue-1" ng-click="claim.connectUphold($event)">
+      <img src="https://uphold.com/en/developer/api/documentation/images/buttons/uphold-connect-with-white@2x.png" height="40">
+    </a>
+</div>
+  </div>
+  <md-content class="md-whiteframe-6dp" style='background:rgb(201, 219, 234)' ng-show="myParclStatus || myParcl"  layout="column" layout-padding layout="center center">
+
+    
+
+    <h4 style="text-align:center">Parcl {{myParclStatus}}</h4>
+    <div layout-margin class="md-whiteframe-1dp" style="background:#fff">
+      <p>John Smith</strong> is hearby granted <strong>{{myParclStatus}}</strong> rights over <strong>{{address}}</strong> in the city of Philadelphia and State of Pennsylvania. </p>
+      <md-divider></md-divider>
+      <p ng-show="myParcl"><small style="font-size:0.6em;">Completed 22 seconds ago (Dec-25-2016 07:26:45 AM +UTC)</small></p>
+      <p ng-show="myParcl"><small style="font-size:0.6em;">Contract <a href="#">0x2a9bfa561432ad0774da79c666932253619a50c8</a></small></p>
+    </div>  
+    <!-- <md-input-container flex md-no-float>
+      <md-checkbox ng-click="toggle(item, selected)">
+       I have read the terms of this agreement.
+      </md-checkbox>
+    </md-input-container> -->
+    <md-button ng-show="myParcl" ng-disabled="true" class="md-raised md-accent"><md-icon md-font-icon="icon-check" aria-label="Close dialog" ng-style="{'font-size':'24px'}"></md-icon> My Parcl</md-button>
+    <md-button ng-click="claimParcl($even)" ng-hide="myParcl" class="md-raised md-primary">Claim My Parcl</md-button>
+        
+  </md-content>
+</form>
+</md-content>

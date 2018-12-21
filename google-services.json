@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1064893708472",
+    "firebase_url": "https://project-5024312928467115441.firebaseio.com",
+    "project_id": "project-5024312928467115441",
+    "storage_bucket": "project-5024312928467115441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064893708472:android:bebf64eb948cc0c4",
+        "android_client_info": {
+          "package_name": "io.melle.dealspace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064893708472-o71jumhqi4j2k88lbnu16opt0ekj6dco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.melle.dealspace",
+            "certificate_hash": "399BCA1B274193AF1F1D1E7D61693D7222CDFB75"
+          }
+        },
+        {
+          "client_id": "1064893708472-n8609t5q53rf6tb9mltnffpmc5lqdg3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh8K3oMveqBgzBRwyjjU6NNdLjm0M2Po0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064893708472-n8609t5q53rf6tb9mltnffpmc5lqdg3u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

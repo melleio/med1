@@ -1,0 +1,39 @@
+<md-dialog aria-label="Property" ng-cloak style="background: rgba(255, 255, 255, 0.2);">
+<md-toolbar>
+      <div>
+       
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+  <md-dialog-content>
+  <md-content layout-margin class="md-whiteframe-1dp" style="background:#fff">
+    <h3>{{property.full_address}}</h3>
+    <p><small>{{property.characteristics.description}}</small>
+    <br>Last Sold {{$root.currentParcel.sales_information.sales_date | cleandate}} for ${{property.sales_information.sales_price | number:2}}
+    <br><strong>Parcl Score:</strong><span style="float:right">B+</span>
+    </p>
+  </md-content>
+  <md-list ng-cloak>
+    <md-list-item ng-repeat="item in items">
+
+      <md-button
+          ng-click="listItemClick($index)"
+          md-autofocus="$index == 2"
+          class="md-list-item-content md-raised md-accent" >
+        <md-icon md-font-icon="{{item.icon}}"></md-icon>
+        <span class="md-inline-list-icon-label">{{ item.name }}</span>
+      </md-button>
+
+    </md-list-item>
+  </md-list>
+  </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+       back
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

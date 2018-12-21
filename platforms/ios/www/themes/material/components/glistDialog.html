@@ -1,0 +1,33 @@
+<md-dialog aria-label="G List">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{title}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="icon-close" aria-label="Close dialog" ng-style="{'font-size':'24px'}"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div>
+        <md-list style="min-width:320px">
+          <md-list-item ng-click="open($index)" class="secondary-button-padding md-3-line" ng-repeat="item in listItems">
+
+           <div class="md-list-item-text" layout="column">
+            <p ng-show="item.formatted_address"><strong>{{(item.address)}}</strong></p>
+           </div>
+          
+          </md-list-item>
+        </md-list>
+ 
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       back
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

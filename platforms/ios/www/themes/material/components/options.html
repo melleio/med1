@@ -1,0 +1,34 @@
+<div flex layout="column" layout-fill style="background:#fff">
+	<div style="padding-top:17px">
+	<md-button class="md-icon-button" ng-click="ul.goBack()">
+      <md-icon md-font-icon="icon-arrow_back" aria-label="Close dialog" ng-style="{'font-size':'24px'}"></md-icon>
+    </md-button>
+    </div>
+<md-list ng-cloak style="min-width:320px">
+	<md-list-item ng-click="$root.openPage('options')" class="">
+		<div class="md-list-item-text" layout="column">
+			<p><strong>My Parcls</strong></p>
+		</div>
+		<md-divider></md-divider>
+	</md-list-item>
+	<md-list-item ng-click="$root.openPage('notes')" class="">
+		<div class="md-list-item-text" layout="column">
+			<p><strong>My Notes</strong></p>
+		</div>
+		<md-divider></md-divider>
+	</md-list-item>
+	<md-list-item ng-click="ul.logIssue($event)" class="">
+		<div class="md-list-item-text" layout="column">
+			<p><strong>Report an Issue</strong></p>
+		</div>
+		<md-divider></md-divider>
+	</md-list-item>
+	<md-list-item ng-click="ul.fireInOut()" class="">
+		<div class="md-list-item-text" layout="column">
+			<p><strong>Sign Out</strong></p>
+		</div>
+		<md-divider></md-divider>
+	</md-list-item>
+</md-list>
+<span flex></span>
+</div>

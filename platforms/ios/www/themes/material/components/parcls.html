@@ -1,0 +1,28 @@
+<md-content ng-controller="WalletCtrl as wallet" flex layout-fill>
+
+
+
+<section layout-padding layout="row" layout-align="start center" layout-wrap>
+<span flex-gt-xs="10"></span>
+<md-content style="background:#fff" flex class="md-whiteframe-4dp">
+<div layout-padding layout="row">
+<p><img src="./themes/material/img/icon.png" height="30px"> {{($root.fireUser.wallet.uphold.parcl.balance ? $root.fireUser.wallet.uphold.parcl.balance : "--")}}</p>
+<span flex flex-gt-xs></span>
+<md-button ng-show="$root.fireUser.wallet.uphold" aria-label="Refresh wallet" class="md-icon-button" ng-click="wallet.refreshWallet()">
+<md-icon md-menu-origin md-font-icon="icon-refresh" ng-style="{'font-size': '24px', height: '40px'}"></md-icon>
+</md-button>
+<a ng-hide="$root.fireUser.wallet.uphold" class="md-primary md-hue-1" ng-click="wallet.connectUphold()"><img src="https://uphold.com/en/developer/api/documentation/images/buttons/uphold-connect-gray@2x.png" height="40"></a>
+</div>
+<md-divider></md-divider>
+<md-list ng-cloak>
+  <md-subheader class="md-no-sticky md-primary">My Parcls</md-subheader>
+  <md-list-item ng-hide="$root.fireUser.wallet.uphold.transactions" ng-click="$root.openPage('home')" class="secondary-button-padding">
+    <p>Find parcls you own or occupy</p>
+    <md-icon class="md-secondary" md-menu-origin md-font-icon="icon-keyboard_arrow_right" ng-style="{'font-size': '24px', height: '18px'}"></md-icon>
+  </md-list-item>
+</md-list>
+</md-content>
+<span flex-gt-xs="10"></span>
+</section>
+
+</md-content>

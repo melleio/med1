@@ -1,0 +1,183 @@
+<md-progress-linear md-mode="indeterminate" ng-show="$root.searching"></md-progress-linear> 
+
+  
+
+<!-- <div layout-fill  ng-cloak layout-align="end end"> -->
+  <div flex="95" ng-controller="MapCtrl as map" ng-show="$root.fireUser" ng-hide id="map_canvas" layout="column" layout-align="start center" style="">
+    <div style="position:relative;top:15px;text-shadow: -1px 2px 1px #999;">
+      <img src="./icon.png" height="45" />
+    </div>
+    <!-- <div style="position:absolute;right:3px;top:60px">
+      <md-button ng-show="$root.filterResults" class="md-fab md-mini md-hue-3" ng-click="$root.showResults($event)" aria-label="Search">
+      <md-icon md-font-icon="icon-list" alt="edit" ng-style="{'font-size':'24px'}"></md-icon>
+      </md-button>
+    </div> -->
+    <span flex="20"></span>
+  	<!-- <md-progress-circular md-mode="indeterminate" ng-show="loadMap"></md-progress-circular> -->
+  </div>
+
+ 
+
+  <md-toolbar flex ng-show="$root.fireUser" ng-hide layout="row" layout-align="start center" class="main-toolbar" style="position:absolute;bottom:0px">
+    <md-button ng-show="$root.onMap" class="md-icon-button" ng-click="$root.openPage('home')" aria-label="Search">
+      <md-icon md-font-icon="icon-search" alt="edit" ng-style="{'font-size':'24px'}"></md-icon>
+    </md-button>
+    
+    <md-toolbar-title>
+      <md-button aria-label="clickit" ng-disabled="!$root.selectedItem" ng-click="ul.openProperty($root.selectedItem)">
+       {{($root.selectedItem ? $root.selectedItem.address : $root.toolbarTitle)}}
+      </md-button>
+      <!-- <p style="font-size: 0.9em;">1709 Ben Franklin Pkwy</p> -->
+    </md-toolbar-title>
+
+    <span flex></span>
+
+    <!-- <md-button aria-label="log it" class="md-icon-button" ng-click="$root.openPage('list')" >
+      <md-icon md-font-icon="icon-print" md-menu-align-target></md-icon>
+    </md-button> -->
+    <md-button aria-label="log it" class="md-icon-button" ng-click="ul.optionsMenu($event)">
+      <md-icon md-font-icon="icon-person" md-menu-align-target></md-icon>
+    </md-button>
+    <md-button aria-label="sort" class="md-icon-button" ng-disabled ng-show="$root.showSort" ng-click="$root.toggleRight()">
+      <md-icon md-font-icon="icon-sort" md-menu-align-target></md-icon>
+    </md-button>
+
+    
+  </md-toolbar>
+
+
+
+<!-- </div> -->
+  <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+  <div ng-controller="RightCtrl" layout-fill layout="column">
+      <md-toolbar class="md-theme-light md-hue-1">
+      <div layout="row">
+        <h1 class="md-toolbar-tools">Map Options</h1>
+        <span flex></span>
+	  </div>
+      </md-toolbar>
+
+    <md-content flex style="font-size:0.86em">
+    <md-list flex>
+    
+      <md-list-item ng-click="showLegend($event)">
+        <md-icon md-font-icon="icon-map"></md-icon>
+        <p> View Zoning Legend </p>
+      </md-list-item>
+     <!--  <md-subheader class="md-no-sticky">Overlays</md-subheader>
+      <md-list-item ng-click="navigateTo(setting.extraScreen, $event)">
+        <p> Crime </p>
+        <md-switch class="md-secondary"></md-switch>
+      </md-list-item>
+      <md-list-item ng-click="navigateTo(setting.extraScreen, $event)">
+        <p>  </p>
+        <md-switch class="md-secondary"></md-switch>
+      </md-list-item> -->
+    </md-list>
+  <md-divider></md-divider>
+  <md-subheader class="md-no-sticky md-hue-2">Filters</md-subheader>
+      <md-card md-theme-watch>
+        <md-progress-circular ng-show class="md-accent md-hue-1" md-diameter="60"></md-progress-circular>
+        <md-list flex style="padding:0px 0px">
+          <md-subheader class="md-no-sticky">Vacant Property
+        </md-subheader>
+        <md-switch ng-model="$root.vacantFilterState" ng-disabled="false" aria-label="Toggle Filters"  class="md-accent md-hue-2">
+        {{($root.vacantFilterState==true ? "on" : "off")}}
+          </md-switch>
+        
+          <md-list-item class="md-1-line md-long-text">
+          
+            Vacant <md-select multiple ng-disabled="!$root.vacantFilterState" placeholder="Land" ng-model="$root.mapFilters.vacant_type" style="margin: -7px 10px 0px 10px;max-width:90px">
+              <md-option ng-value="s" ng-repeat="s in vacant_type">{{s}}</md-option>
+            </md-select>
+            <md-select ng-disabled="!$root.vacantFilterState" placeholder="Nearby" ng-model="$root.mapFilters.envelope" style="margin: -7px 10px 0px 10px;max-width:65px">
+              <md-option ng-value="s" ng-repeat="s in envelope">{{s}}</md-option>
+            </md-select>
+          </md-list-item>
+        </md-list>
+      </md-card>
+
+      <md-card>
+        <md-progress-circular ng-show class="md-accent md-hue-1" md-diameter="60"></md-progress-circular>
+        <div layout-wrap>
+          <md-subheader class="md-no-sticky md-primary">In/Use
+        </md-subheader>
+        <md-switch ng-model="$root.inuseFilterState" ng-disabled="false" aria-label="Toggle Filters"  class="md-primary">
+          {{($root.inuseFilterState==true ? "on" : "off")}}
+          </md-switch>
+
+          <div layout-margin layout="row">
+            <md-select ng-disabled="!$root.inuseFilterState" placeholder="Viewport" ng-model="$root.mapFilters.envelope" style="margin: -7px 10px 4px 10px ">
+              <md-option ng-value="s" ng-repeat="s in $root.envelope">{{s}}</md-option>
+            </md-select> 
+           <md-select ng-disabled="!$root.inuseFilterState" placeholder="description" ng-model="$root.mapFilters.parcel_type" style="margin: -7px 10px 4px 10p;xmax-width:65px">
+            <md-option ng-value="{'name':s.name,value:s.value}" ng-repeat="s in parcel_types">{{s.name}}</md-option>
+          </md-select> 
+          </div>
+          <div layout-margin layout-padding layout="row">zoned for
+            <md-select ng-disabled="!$root.inuseFilterState" placeholder="Zoning" ng-model="$root.mapFilters.zoning" md-on-open="loadZoning()" style="margin: -14px 10px 4px 10px;max-width:125px">
+            <md-optgroup label="{{s.code}}" ng-repeat="s in $root.phillyZoning">
+              <md-option ng-value="z.code" ng-repeat="z in s.districts">{{z.code}}</md-option>
+            </md-optgroup>  
+            </md-select>
+          </div>
+
+
+          <span layout-margin style="padding-top:15px"><md-checkbox aria-label="Taxes" ng-model="$root.mapFilters.totalAreaActive">
+              Total Area
+            </md-checkbox>
+          </span>
+          <div layout-margin layout="row">
+            <md-select ng-disabled="!$root.inuseFilterState" placeholder="Less" ng-model="$root.mapFilters.dimensions_less_greater" style="margin: -10px 10px 0px 10px;">
+              <md-option ng-value="s" ng-repeat="s in less_greater">{{s}}</md-option>
+            </md-select> {{($root.mapFilters.dimensions_less_greater == 'equals' ? '' : 'than')}}
+          </div>
+           <div layout-margin layout="row">
+           <md-slider ng-disabled="!$root.mapFilters.totalAreaActive" flex class="md-warn" md-discrete ng-model="$root.mapFilters.totalArea" step="500" min="0" max="10000" aria-label="area">
+            </md-slider>
+            <span style="margin: 20px 10px 10px;"><strong>{{($root.mapFilters.totalArea == 10000 ? '+' : '')}}</strong> sq/ft</span>
+          </div>
+
+          <span layout-margin style="padding-top:15px"><md-checkbox aria-label="Taxes" ng-model="$root.mapFilters.taxesActive">
+              Tax Delinquent
+            </md-checkbox>
+
+          </span>
+          <div layout-margin layout="row">
+            
+            <md-slider ng-disabled="!$root.mapFilters.taxesActive" flex class="md-warn" md-discrete ng-model="$root.mapFilters.taxYears" step="1" min="1" max="10" aria-label="rating">
+            </md-slider>
+            <span style="margin: 20px 10px 10px;"><strong>{{($root.mapFilters.taxYears == 10 ? '+' : '')}}</strong> yrs</span>
+          </div>
+
+          <!-- <div>
+            <md-checkbox aria-label="Select All"
+                         ng-checked="isChecked()"
+                         md-indeterminate="isIndeterminate()"
+                         ng-click="toggleAllSheriff()">
+              Sheriff Sale
+            </md-checkbox>
+            <div layout="row" style="padding-left: 10px;" flex="100">
+              <md-checkbox ng-repeat="item in sheriff_type" ng-checked="exists(item, $root.mapFilters.sheriff)" ng-click="toggle(item, $root.mapFilters.sheriff)">
+               {{ item }}
+              </md-checkbox>
+            </div>
+          </div> -->
+
+             
+          
+        
+        </div>
+      </md-card>
+    </md-content>
+      <div>
+      <md-button ng-show="$root.inuseFilterState || $root.vacantFilterState" aria-label="close" ng-click="saveFilter($event)" class="md-primary">
+          Show
+        </md-button>
+        <md-button aria-label="close" ng-click="close()" class="md-primary">
+          Close
+        </md-button>
+      </div>
+      </div>
+       
+    </md-sidenav>

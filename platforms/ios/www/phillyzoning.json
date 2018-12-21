@@ -1,0 +1,224 @@
+[{
+  code:"RSD",
+  description:"",
+  color:"#fff5c4",
+  districts:[
+    {code:"RSD1",
+    image:"",
+    min_width:"75 ft",
+    min_area:"10,000 sq. ft.",
+    min_openArea:"65%",
+    min_frontSetback:"35 ft.",
+    min_sideYardWidth:"15 ft.",
+    min_rearYardDepth:"30 ft.",
+    max_height:"38 ft."
+    },
+    {code:"RSD2",
+    image:"",
+    min_width:"65 ft",
+    min_area:"7,800 sq. ft.",
+    min_openArea:"65%",
+    min_frontSetback:"35 ft.",
+    min_sideYardWidth:"10 ft.",
+    min_rearYardDepth:"30 ft.",
+    max_height:"38 ft."
+    },
+    {code:"RSD3",
+    image:"",
+    min_width:"50 ft.",
+    min_area:"5,000 sq. ft.",
+    min_openArea:"705",
+    min_frontSetback:"25 ft.",
+    min_sideYardWidth:"Intermediate: 10 ft, 25 ft. total Corner: 7 ft.",
+    min_rearYardDepth:"25 ft.",
+    max_height:"38 ft."
+    }
+  ]
+},
+{
+  code:"RSA",
+  description:"",
+  color:"#f8ee68",
+  districts:[
+    {code:"RSA1"
+    },
+    {code:"RSA2"
+    },
+    {code:"RSA3"
+    }
+  ]
+},
+{
+  code:"RTA",
+  description:"",
+  color:"#cdb650",
+  districts:[
+    {code:"RTA1"
+    }
+  ]
+},
+{
+  code:"RM",
+  description:"",
+  color:"#cdb650",
+  districts:[
+    {code:"RM1"
+    },
+    {code:"RM2"
+    },
+    {code:"RM3"
+    },
+    {code:"RM4"
+    }
+  ]
+},
+{
+  code:"RMX",
+  description:"",
+  color:"#cdb650",
+  districts:[
+    {code:"RMX1"
+    },
+    {code:"RMX2"
+    },
+    {code:"RMX3"
+    }
+  ]
+},
+{
+  code:"CMX",
+  description:"",
+  color:"#cdb650",
+  districts:[
+    {code:"CMX1"
+    },
+    {code:"CMX2"
+    },
+    {code:"CMX2.5"
+    }
+  ]
+},
+{
+  code:"CMX",
+  description:"",
+  color:"#cdb650",
+  districts:[
+    {code:"CMX3"
+    },
+    {code:"CMX4"
+    },
+    {code:"CMX5"
+    }
+  ]
+},
+{
+  code:"CA",
+  description:"",
+  color:"#f7a1a4",
+  districts:[
+    {code:"CA1"
+    },
+    {code:"CA2"
+    }
+  ]
+},
+{
+  code:"IRMX",
+  description:"",
+  color:"#d4a579",
+  districts:[
+    {code:"IRMX"
+    }
+  ]
+},
+{
+  code:"ICMX",
+  description:"",
+  color:"#dcbddc",
+  districts:[
+    {code:"ICMX"
+    }
+  ]
+},
+{
+  code:"I-1",
+  description:"",
+  color:"#b17eb7",
+  districts:[
+    {code:"I-1"
+    }
+  ]
+},
+{
+  code:"I-2",
+  description:"",
+  color:"#894b9e",
+  districts:[
+    {code:"I-2"
+    }
+  ]
+},
+{
+  code:"I-3",
+  description:"",
+  color:"#56489d",
+  districts:[
+    {code:"I-3"
+    }
+  ]
+},
+{
+  code:"I-P",
+  description:"",
+  color:"#8180bc",
+  districts:[
+    {code:"I-P"
+    }
+  ]
+},
+{
+  code:"SP-INS",
+  description:"",
+  color:"#7eb2e2",
+  districts:[
+    {code:"SP-INS"
+    }
+  ]
+},
+{
+  code:"SP-ENT",
+  description:"",
+  color:"#815824",
+  districts:[
+    {code:"SP-ENT"
+    }
+  ]
+},
+{
+  code:"SP-STA",
+  description:"",
+  color:"#108acb",
+  districts:[
+    {code:"SP-STA"
+    }
+  ]
+},
+{
+  code:"SP-PO",
+  description:"",
+  color:"#008e46",
+  districts:[
+    {code:"SP-PO"
+    }
+  ]
+},
+{
+  code:"SP-AIR",
+  description:"",
+  color:"#bec0cd",
+  districts:[
+    {code:"SP-AIR"
+    }
+  ]
+}
+]

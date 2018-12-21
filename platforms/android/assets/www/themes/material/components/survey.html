@@ -1,0 +1,21 @@
+<div ng-cloak layout-xs="column" layout="column" layout-align="start start" style="">
+<md-content flex layout-padding>
+            <div layout-align="start start" layout="column">
+              <h2>{{$root.activeSurvey.doctor.FirstName}}</h2>
+              <p><i>{{s.timestamp | formatTimeRelative}}</i></p>
+            </div>
+            <md-divider></md-divider>
+            <div layout-align="start start" layout="row">
+                  <div layout="column">
+                        <h3>{{s.Title}}</h3>
+                  </div>
+            </div>
+            <div ng-show="item.Content" style="min-width:320px;" layout-fill ng-repeat="item in $root.activeSurvey.survey.items" layout="column">
+              <p>{{item.Content}}</p>
+              <p><strong>{{(item.answer.name ? item.answer.name: 'No Answer')}}</strong></p>
+              
+            </div>
+            
+            
+  </md-content>
+  </div>

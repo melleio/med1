@@ -1,0 +1,35 @@
+
+<md-content layout="column" layout-padding layout="center center" style="background:#fff">
+    
+        <span flex></span>
+    <h2 style="text-align:center;color:rgb(13,71,161)" ng-class="{'fade-in': !$root.user}" class="parclFade">parcl</h2>
+
+      <md-input-container ng-show="!$root.waitForCode" flex md-no-float>
+        <label>Enter your Phone Number</label>
+        <input type="number" step="any" name="pCode" ng-model="$root.phoneNumber">
+
+      </md-input-container>
+
+      <md-input-container ng-show="$root.waitForCode" flex md-no-float>
+        <label>Parcl Code</label>
+        <input type="number" step="any" name="pCode" min="1000"
+               max="999999" ng-model="ul.parclcode">
+
+      </md-input-container>
+
+      <div layout="column">
+        <md-button ng-show="$root.waitForCode" class="md-raised" ng-click="ul.checkParclCode($event,ul.parclcode)">enter</md-button>
+        <!-- <div layout="row">
+          <div flex="" class="flex">
+    <md-divider style="border-top-color:#AAAAAA; margin: 47px 10px;" flex="" class="flex"></md-divider>
+  </div>
+        <p style="text-align:center;margin: 37px 0px;">or</p>
+        <div flex="" class="flex">
+    <md-divider style="border-top-color:#AAAAAA; margin: 47px 10px;" flex="" class="flex"></md-divider>
+  </div>
+      </div> -->
+        <md-button ng-show="!$root.waitForCode" class="md-primary" ng-click="ul.getParclCode($event)">Get Code</md-button>
+        <md-button ng-show="$root.waitForCode" class="md-primary" ng-click="ul.resendCode($event)">Re-send Code</md-button>
+      </div>
+      
+  </md-content>

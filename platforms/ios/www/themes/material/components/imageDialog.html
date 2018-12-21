@@ -1,0 +1,13 @@
+<md-dialog aria-label="Image Dialog" ng-cloak>
+ <md-toolbar>
+      <div class="md-toolbar-tools" style="background:#fff;color:#000">
+      	<md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="icon-arrow_back" aria-label="Close dialog" ng-style="{'font-size':'24px','color':'#000'}"></md-icon>
+        </md-button>
+        <h2>{{title}}</h2>
+        <span flex></span>
+        
+      </div>
+    </md-toolbar>
+  <img src="{{image}}" width="700px"/>
+</md-dialog>
